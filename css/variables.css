@@ -1,0 +1,139 @@
+/* =============================================================================
+   variables.css — Sistema de diseño (design tokens)
+   -----------------------------------------------------------------------------
+   Aquí vive TODO lo que define la identidad visual. Si quieres cambiar el look
+   de la web sin tocar los componentes, este es el único archivo que necesitas.
+
+   EDITAR AQUÍ:
+   • Colores de marca  → bloque "Color · Acento"
+   • Tipografías       → bloque "Tipografía" (+ <link> de Google Fonts en index.html)
+   • Espaciados        → bloque "Espaciado"
+   • Ancho del layout  → "Layout"
+   ========================================================================== */
+
+:root {
+  /* Evita que el navegador invente el modo claro en formularios y scrollbars */
+  color-scheme: dark;
+
+  /* ---------------------------------------------------------------------------
+     COLOR · BASE
+     Fondo casi negro con superficies ligeramente más claras para crear capas.
+     --------------------------------------------------------------------------- */
+  --color-bg: #08090a;          /* Fondo principal (dark mode por defecto)   */
+  --color-bg-soft: #0c0e10;     /* Fondo de secciones alternas               */
+  --color-surface: #111416;     /* Cards y paneles                           */
+  --color-surface-2: #171b1d;   /* Cards elevadas / hover                    */
+  --color-border: rgba(255, 255, 255, 0.08);
+  --color-border-strong: rgba(255, 255, 255, 0.16);
+
+  /* ---------------------------------------------------------------------------
+     COLOR · TEXTO
+     --------------------------------------------------------------------------- */
+  --color-text: #f2f5f3;        /* Texto principal                           */
+  --color-text-muted: #98a29d;  /* Párrafos y navegación secundaria          */
+  --color-text-dim: #7d8782;    /* Metadatos y labels (contraste AA en fondos oscuros) */
+
+  /* ---------------------------------------------------------------------------
+     COLOR · ACENTO (verde neón)
+     EDITAR AQUÍ: cambia --color-accent por tu color de marca.
+     Recuerda ajustar también los rgba() de soft/glow al mismo tono.
+     --------------------------------------------------------------------------- */
+  --color-accent: #00ff87;
+  --color-accent-bright: #5cffb0; /* Hover / brillos                        */
+  --color-accent-deep: #00d873;   /* Bordes y degradados                     */
+  --color-accent-ink: #04120d;    /* Texto sobre fondos verdes               */
+  --color-accent-soft: rgba(0, 255, 135, 0.1);
+  --color-accent-glow: rgba(0, 255, 135, 0.35);
+  --gradient-accent: linear-gradient(135deg, #5cffb0 0%, #00ff87 45%, #00c96b 100%);
+
+  /* ---------------------------------------------------------------------------
+     TIPOGRAFÍA
+     Display: Space Grotesk (titulares con carácter)
+     Body:    Inter (lectura cómoda)
+     Mono:    JetBrains Mono (etiquetas, datos y numeración)
+     --------------------------------------------------------------------------- */
+  --font-display: "Space Grotesk", "Plus Jakarta Sans", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", monospace;
+
+  /* Escala fluida: crece con el viewport sin saltos bruscos */
+  --fs-xs: 0.75rem;
+  --fs-sm: 0.875rem;
+  --fs-base: clamp(0.9375rem, 0.9rem + 0.2vw, 1.0625rem);
+  --fs-lg: clamp(1.0625rem, 1rem + 0.35vw, 1.25rem);
+  --fs-xl: clamp(1.25rem, 1.1rem + 0.7vw, 1.625rem);
+  --fs-2xl: clamp(1.75rem, 1.4rem + 1.6vw, 2.5rem);
+  --fs-3xl: clamp(2.25rem, 1.7rem + 2.8vw, 3.75rem);
+  --fs-display: clamp(2.75rem, 1.8rem + 5vw, 5.5rem); /* Hero (Bloque 2) */
+
+  --lh-tight: 1.06;
+  --lh-body: 1.65;
+  --ls-tight: -0.03em;
+  --ls-wide: 0.16em;
+
+  /* ---------------------------------------------------------------------------
+     ESPACIADO — escala de 4px
+     --------------------------------------------------------------------------- */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+  --space-32: 8rem;
+
+  --section-y: clamp(4.5rem, 11vw, 8.5rem); /* Aire vertical de secciones */
+
+  /* ---------------------------------------------------------------------------
+     LAYOUT
+     --------------------------------------------------------------------------- */
+  --container: 1240px;
+  --gutter: clamp(1.25rem, 4vw, 2.5rem);
+  --header-height: 72px;
+
+  /* ---------------------------------------------------------------------------
+     RADIOS
+     --------------------------------------------------------------------------- */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+  --radius-xl: 32px;
+  --radius-pill: 999px;
+
+  /* ---------------------------------------------------------------------------
+     SOMBRAS
+     --------------------------------------------------------------------------- */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.25);
+  --shadow-md: 0 18px 45px -20px rgba(0, 0, 0, 0.8);
+  --shadow-glow: 0 0 0 1px rgba(0, 255, 135, 0.22),
+                 0 18px 48px -18px var(--color-accent-glow);
+
+  /* ---------------------------------------------------------------------------
+     MOVIMIENTO
+     --------------------------------------------------------------------------- */
+  --dur-fast: 160ms;
+  --dur: 240ms;
+  --dur-slow: 420ms;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+
+  /* ---------------------------------------------------------------------------
+     CAPAS (z-index)
+     --------------------------------------------------------------------------- */
+  --z-bg: -1;
+  --z-menu: 90;     /* Menú móvil, por debajo del header */
+  --z-header: 100;  /* Header siempre visible            */
+}
+
+/* En desktop el header es una cápsula de 66px + 12px de aire superior */
+@media (min-width: 960px) {
+  :root {
+    --header-height: 78px;
+  }
+}

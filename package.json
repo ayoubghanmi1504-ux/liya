@@ -1,0 +1,13 @@
+{
+  "name": "liya-agency",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Landing bilingüe de Liyā Agency con Vercel Functions y Turso.",
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@libsql/client": "^0.18.0"
+  }
+}

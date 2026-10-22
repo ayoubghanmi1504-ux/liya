@@ -1,0 +1,874 @@
+/* =============================================================================
+   mockups.css — páginas de muestra para las capturas del portfolio
+   -----------------------------------------------------------------------------
+   Siete landings sencillas, cada una con su propia paleta y composición.
+   Se usan solo como fuente de las capturas de assets/img/proyectos/.
+   No están enlazadas desde el portfolio.
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100%;
+  margin: 0;
+}
+
+body {
+  --nav-h: 82px;
+  --strip-h: 64px;
+
+  height: 100vh;
+  overflow: hidden;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* --- Temas ---------------------------------------------------------------- */
+.theme-noma {
+  --bg: #f3eee4;
+  --fg: #1e3a2f;
+  --muted: #627063;
+  --accent: #b56a3f;
+  --accent-ink: #fff7ee;
+  --line: rgba(30, 58, 47, 0.14);
+  --line-strong: rgba(30, 58, 47, 0.32);
+  --font-display: "DM Serif Display", Georgia, serif;
+  --font-body: "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+.theme-kite {
+  --bg: #eaf4f4;
+  --fg: #13343b;
+  --muted: #5c777c;
+  --accent: #2e7f7c;
+  --accent-ink: #f5ffff;
+  --line: rgba(19, 52, 59, 0.13);
+  --line-strong: rgba(19, 52, 59, 0.3);
+  --font-display: "Manrope", sans-serif;
+  --font-body: "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+.theme-lumen {
+  --bg: #eef7f5;
+  --fg: #0d484c;
+  --muted: #5c7977;
+  --accent: #e78a6a;
+  --accent-ink: #38160e;
+  --line: rgba(13, 72, 76, 0.13);
+  --line-strong: rgba(13, 72, 76, 0.3);
+  --font-display: "Sora", sans-serif;
+  --font-body: "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+.theme-atlas {
+  --bg: #111210;
+  --fg: #f4f2e8;
+  --muted: #a6a89e;
+  --accent: #d6ff3f;
+  --accent-ink: #10120a;
+  --line: rgba(244, 242, 232, 0.14);
+  --line-strong: rgba(244, 242, 232, 0.3);
+  --font-display: "Anton", sans-serif;
+  --font-body: "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+.theme-casa {
+  --bg: #f1ece2;
+  --fg: #314235;
+  --muted: #707b70;
+  --accent: #a96b4f;
+  --accent-ink: #fff8f0;
+  --line: rgba(49, 66, 53, 0.15);
+  --line-strong: rgba(49, 66, 53, 0.33);
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-body: "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+.theme-sur {
+  --bg: #f3f0ea;
+  --fg: #191a18;
+  --muted: #716e67;
+  --accent: #a8452c;
+  --accent-ink: #fff7f0;
+  --line: rgba(25, 26, 24, 0.14);
+  --line-strong: rgba(25, 26, 24, 0.32);
+  --font-display: "Space Grotesk", sans-serif;
+  --font-body: "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+.theme-marea {
+  --bg: #0b1f2e;
+  --fg: #f1e6d5;
+  --muted: #a5b2b8;
+  --accent: #d7b98e;
+  --accent-ink: #1b160f;
+  --line: rgba(241, 230, 213, 0.16);
+  --line-strong: rgba(241, 230, 213, 0.34);
+  --font-display: "Playfair Display", Georgia, serif;
+  --font-body: "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+/* --- Navegación ----------------------------------------------------------- */
+.mock-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  height: var(--nav-h);
+  padding: 0 clamp(28px, 4vw, 64px);
+  border-bottom: 1px solid var(--line);
+}
+
+.mock-brand {
+  flex: none;
+  font-family: var(--font-display);
+  font-size: clamp(19px, 1.7vw, 23px);
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  white-space: nowrap;
+}
+
+.mock-nav nav {
+  display: flex;
+  gap: clamp(18px, 2.4vw, 34px);
+  color: var(--muted);
+  font-size: 12px;
+  letter-spacing: 0.02em;
+}
+
+.mock-navcta {
+  flex: none;
+  padding: 11px 18px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: var(--accent-ink);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* --- Estructura ----------------------------------------------------------- */
+.mock-hero {
+  position: relative;
+  display: grid;
+  align-items: center;
+  min-height: calc(100vh - var(--nav-h) - var(--strip-h));
+  padding: clamp(32px, 5.5vw, 76px) clamp(28px, 5vw, 80px);
+  gap: clamp(24px, 4vw, 64px);
+}
+
+.layout-split .mock-hero {
+  grid-template-columns: minmax(0, 1.02fr) minmax(0, 0.98fr);
+}
+
+.layout-editorial .mock-hero {
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  align-items: end;
+}
+
+.layout-center .mock-hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.mock-copy {
+  position: relative;
+  z-index: 5;
+  max-width: 660px;
+}
+
+.layout-editorial .mock-copy {
+  padding-bottom: clamp(28px, 5vw, 64px);
+}
+
+.layout-center .mock-copy {
+  max-width: 830px;
+}
+
+.mock-eyebrow {
+  margin: 0 0 20px;
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+}
+
+.mock-title {
+  max-width: 12ch;
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(50px, 6.4vw, 91px);
+  font-weight: 600;
+  line-height: 0.92;
+  letter-spacing: -0.055em;
+  text-wrap: balance;
+}
+
+.layout-center .mock-title {
+  max-width: 14ch;
+  margin-inline: auto;
+}
+
+.theme-atlas .mock-title {
+  max-width: 10ch;
+  font-size: clamp(62px, 8.2vw, 118px);
+  line-height: 0.82;
+  letter-spacing: -0.015em;
+  text-transform: uppercase;
+}
+
+.theme-casa .mock-title {
+  font-size: clamp(54px, 7.2vw, 102px);
+  font-weight: 500;
+}
+
+.mock-title em {
+  color: var(--accent);
+  font-style: italic;
+  font-weight: inherit;
+}
+
+.theme-atlas .mock-title em {
+  color: var(--accent);
+  font-style: normal;
+}
+
+.mock-lead {
+  max-width: 46ch;
+  margin: 24px 0 0;
+  color: var(--muted);
+  font-size: clamp(14px, 1.2vw, 16px);
+  line-height: 1.65;
+}
+
+.layout-center .mock-lead {
+  margin-inline: auto;
+}
+
+.mock-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 11px;
+  margin-top: 31px;
+}
+
+.layout-center .mock-actions {
+  justify-content: center;
+}
+
+.mock-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  padding: 0 20px;
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  background: var(--accent);
+  color: var(--accent-ink);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.mock-btn--ghost {
+  border-color: var(--line-strong);
+  background: transparent;
+  color: var(--fg);
+}
+
+.mock-strip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  height: var(--strip-h);
+  padding: 0 clamp(28px, 4vw, 64px);
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+/* --- Visuales ------------------------------------------------------------- */
+.mock-visual {
+  position: relative;
+  min-height: 420px;
+}
+
+.layout-center .mock-visual {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  min-height: 0;
+  pointer-events: none;
+}
+
+/* Noma: bolsa de café + sol */
+.visual-noma__sun {
+  position: absolute;
+  top: 9%;
+  right: 8%;
+  width: clamp(170px, 22vw, 300px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--accent);
+  opacity: 0.9;
+}
+
+.visual-noma__bag {
+  position: absolute;
+  top: 15%;
+  left: 15%;
+  display: grid;
+  place-items: center;
+  width: clamp(220px, 27vw, 340px);
+  aspect-ratio: 0.72;
+  padding: 15%;
+  border-radius: 14px 14px 22px 22px;
+  background: #1e3a2f;
+  color: #f3eee4;
+  box-shadow: 0 34px 70px -28px rgba(30, 58, 47, 0.6);
+  transform: rotate(-4deg);
+}
+
+.visual-noma__bag::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 14%;
+  width: 72%;
+  height: 7px;
+  border-radius: 0 0 8px 8px;
+  background: rgba(243, 238, 228, 0.18);
+}
+
+.visual-noma__label {
+  width: 100%;
+  padding: 18px 14px;
+  border: 1px solid rgba(243, 238, 228, 0.3);
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.visual-noma__label b {
+  display: block;
+  margin: 10px 0 7px;
+  font-family: var(--font-display);
+  font-size: clamp(26px, 3.2vw, 42px);
+  font-weight: 400;
+  letter-spacing: -0.04em;
+  text-transform: none;
+}
+
+.visual-noma__card {
+  position: absolute;
+  right: 2%;
+  bottom: 8%;
+  width: min(240px, 42%);
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: rgba(255, 252, 245, 0.9);
+  box-shadow: 0 22px 50px -28px rgba(30, 58, 47, 0.5);
+}
+
+.visual-noma__card span {
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.12em;
+}
+
+.visual-noma__card b {
+  display: block;
+  margin-top: 7px;
+  font-size: 14px;
+}
+
+.visual-noma__card small {
+  display: block;
+  margin-top: 5px;
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 1.5;
+}
+
+/* Kite: botes + burbujas */
+.visual-kite__blob {
+  position: absolute;
+  inset: 6% 5% 5% 9%;
+  border-radius: 48% 52% 46% 54% / 54% 46% 54% 46%;
+  background: rgba(46, 127, 124, 0.12);
+}
+
+.visual-kite__bottle {
+  position: absolute;
+  bottom: 11%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  width: clamp(90px, 10vw, 130px);
+  height: clamp(210px, 25vw, 320px);
+  padding-bottom: 20px;
+  border-radius: 20px 20px 14px 14px;
+  background: #ffffff;
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  box-shadow: 0 26px 50px -26px rgba(19, 52, 59, 0.35);
+}
+
+.visual-kite__bottle::before {
+  content: "";
+  position: absolute;
+  top: -22px;
+  left: 50%;
+  width: 38%;
+  height: 26px;
+  border-radius: 5px 5px 0 0;
+  background: #13343b;
+  transform: translateX(-50%);
+}
+
+.visual-kite__bottle::after {
+  content: "";
+  position: absolute;
+  top: 24%;
+  left: 20%;
+  width: 60%;
+  height: 1px;
+  background: rgba(19, 52, 59, 0.18);
+}
+
+.visual-kite__bottle--1 {
+  left: 18%;
+  transform: rotate(-5deg);
+}
+
+.visual-kite__bottle--2 {
+  right: 18%;
+  height: clamp(180px, 21vw, 275px);
+  background: #d7eceb;
+  transform: rotate(4deg);
+}
+
+.visual-kite__note {
+  position: absolute;
+  right: 2%;
+  bottom: 3%;
+  width: min(240px, 44%);
+  padding: 17px 18px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.78);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.visual-kite__note small {
+  display: block;
+  margin-top: 5px;
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 400;
+}
+
+/* Lumen: arco + tarjeta de cita */
+.visual-lumen__arch {
+  position: absolute;
+  top: 10%;
+  right: 8%;
+  width: min(480px, 42vw);
+  height: 78%;
+  border: 1px solid var(--line-strong);
+  border-radius: 240px 240px 0 0;
+  background: linear-gradient(180deg, rgba(231, 138, 106, 0.2), rgba(13, 72, 76, 0.03));
+}
+
+.visual-lumen__arch::after {
+  content: "";
+  position: absolute;
+  inset: 12%;
+  border-radius: 200px 200px 0 0;
+  background: var(--bg);
+  border: 1px solid var(--line);
+}
+
+.visual-lumen__card {
+  position: absolute;
+  right: 4%;
+  bottom: 9%;
+  width: min(280px, 30%);
+  padding: 22px;
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow: 0 28px 60px -28px rgba(13, 72, 76, 0.35);
+}
+
+.visual-lumen__card span {
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.visual-lumen__card b {
+  display: block;
+  margin-top: 8px;
+  font-family: var(--font-display);
+  font-size: 32px;
+  letter-spacing: -0.04em;
+}
+
+.visual-lumen__card small {
+  display: block;
+  margin-top: 9px;
+  color: var(--muted);
+  font-size: 10px;
+}
+
+.visual-lumen__dots {
+  position: absolute;
+  left: 8%;
+  bottom: 11%;
+  display: flex;
+  gap: 7px;
+}
+
+.visual-lumen__dots i {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--accent);
+  opacity: 0.8;
+}
+
+/* Atlas: banda lima + stats */
+.visual-atlas__stripe {
+  position: absolute;
+  top: -20%;
+  right: 15%;
+  width: 22%;
+  height: 140%;
+  background: var(--accent);
+  transform: rotate(14deg);
+  opacity: 0.95;
+}
+
+.visual-atlas__stat {
+  position: absolute;
+  right: 3%;
+  top: 15%;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 22px;
+  border: 1px solid var(--line-strong);
+  background: rgba(17, 18, 16, 0.82);
+  backdrop-filter: blur(8px);
+}
+
+.visual-atlas__stat b {
+  color: var(--accent);
+  font-family: var(--font-display);
+  font-size: 46px;
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.visual-atlas__stat span {
+  margin-top: 8px;
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.visual-atlas__chips {
+  position: absolute;
+  left: 8%;
+  bottom: 9%;
+  display: flex;
+  gap: 8px;
+}
+
+.visual-atlas__chips span {
+  padding: 9px 13px;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.08em;
+}
+
+/* Casa Verde: arco, planta y materiales */
+.visual-casa__arch {
+  position: absolute;
+  top: 7%;
+  left: 7%;
+  width: 58%;
+  height: 86%;
+  border-radius: 260px 260px 0 0;
+  background: linear-gradient(180deg, #c9c2b1, #9fa58f);
+}
+
+.visual-casa__arch::after {
+  content: "";
+  position: absolute;
+  inset: 9%;
+  border-radius: 240px 240px 0 0;
+  background: rgba(241, 236, 226, 0.62);
+}
+
+.visual-casa__plant {
+  position: absolute;
+  left: 38%;
+  bottom: 8%;
+  width: 120px;
+  height: 270px;
+}
+
+.visual-casa__plant i {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  height: 100%;
+  background: #314235;
+  transform-origin: bottom;
+}
+
+.visual-casa__plant i:nth-child(1) { transform: rotate(-18deg); }
+.visual-casa__plant i:nth-child(2) { transform: rotate(7deg); height: 84%; }
+.visual-casa__plant i:nth-child(3) { transform: rotate(24deg); height: 70%; }
+
+.visual-casa__plant i::before,
+.visual-casa__plant i::after {
+  content: "";
+  position: absolute;
+  width: 34px;
+  height: 16px;
+  border-radius: 50%;
+  background: #526b52;
+}
+
+.visual-casa__plant i::before { top: 18%; left: -32px; transform: rotate(-24deg); }
+.visual-casa__plant i::after { top: 46%; left: 2px; transform: rotate(18deg); }
+
+.visual-casa__swatches {
+  position: absolute;
+  right: 4%;
+  bottom: 12%;
+  display: flex;
+  gap: 8px;
+}
+
+.visual-casa__swatches span {
+  width: 52px;
+  height: 70px;
+  border-radius: 4px;
+  background: #d8c7b4;
+}
+
+.visual-casa__swatches span:nth-child(2) { background: #7d8c74; }
+.visual-casa__swatches span:nth-child(3) { background: #a96b4f; }
+
+.visual-casa__caption {
+  position: absolute;
+  right: 4%;
+  top: 8%;
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* Sur: retícula arquitectónica */
+.visual-sur__grid {
+  position: absolute;
+  inset: 8% 0 9% 12%;
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr 0.7fr;
+  gap: 10px;
+}
+
+.visual-sur__grid span {
+  border: 1px solid var(--line-strong);
+  background: rgba(168, 69, 44, 0.06);
+}
+
+.visual-sur__grid span:nth-child(2) {
+  background: #d9d4ca;
+  transform: translateY(12%);
+}
+
+.visual-sur__grid span:nth-child(3) {
+  background: #a8452c;
+  transform: translateY(-6%);
+}
+
+.visual-sur__outline {
+  position: absolute;
+  right: -1%;
+  bottom: 2%;
+  color: transparent;
+  font-family: var(--font-display);
+  font-size: clamp(100px, 16vw, 230px);
+  font-weight: 600;
+  line-height: 0.75;
+  letter-spacing: -0.08em;
+  -webkit-text-stroke: 1px var(--line-strong);
+}
+
+.visual-sur__caption {
+  position: absolute;
+  left: 12%;
+  top: 4%;
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* Marea: horizonte + tarjeta de reserva */
+.visual-marea__sun {
+  position: absolute;
+  top: 12%;
+  right: 16%;
+  width: clamp(150px, 18vw, 250px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--accent);
+  opacity: 0.9;
+}
+
+.visual-marea__horizon {
+  position: absolute;
+  inset: 44% 0 0;
+  background: linear-gradient(180deg, rgba(215, 185, 142, 0.12), rgba(7, 23, 34, 0.7));
+}
+
+.visual-marea__waves {
+  position: absolute;
+  inset: 55% 0 0;
+  overflow: hidden;
+}
+
+.visual-marea__waves i {
+  position: absolute;
+  left: -10%;
+  width: 120%;
+  height: 1px;
+  background: rgba(241, 230, 213, 0.32);
+}
+
+.visual-marea__waves i:nth-child(1) { top: 15%; }
+.visual-marea__waves i:nth-child(2) { top: 38%; opacity: 0.65; }
+.visual-marea__waves i:nth-child(3) { top: 62%; opacity: 0.4; }
+
+.visual-marea__card {
+  position: absolute;
+  right: 2%;
+  bottom: 7%;
+  width: min(270px, 31%);
+  padding: 20px;
+  border: 1px solid rgba(241, 230, 213, 0.24);
+  border-radius: 12px;
+  background: rgba(11, 31, 46, 0.82);
+  backdrop-filter: blur(10px);
+}
+
+.visual-marea__card span {
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.visual-marea__card b {
+  display: block;
+  margin-top: 8px;
+  color: var(--accent);
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 500;
+}
+
+.visual-marea__card small {
+  display: block;
+  margin-top: 7px;
+  color: var(--muted);
+  font-size: 10px;
+}
+
+/* --- Ajustes por composición --------------------------------------------- */
+.layout-center .visual-lumen__arch {
+  right: 6%;
+  width: min(560px, 48vw);
+}
+
+.layout-center .visual-lumen__card {
+  right: 7%;
+  bottom: 12%;
+}
+
+.layout-center .visual-atlas__stripe {
+  display: none;
+}
+
+.layout-center .visual-atlas__stat {
+  right: 8%;
+  top: 18%;
+}
+
+.layout-center .visual-atlas__chips {
+  left: 8%;
+  bottom: 14%;
+}
+
+@media (max-width: 900px) {
+  body { --nav-h: 72px; --strip-h: 54px; }
+  .mock-nav nav { display: none; }
+  .mock-title { font-size: clamp(42px, 9vw, 64px); }
+  .layout-split .mock-hero,
+  .layout-editorial .mock-hero { grid-template-columns: 1fr; }
+  .mock-visual { min-height: 260px; }
+}

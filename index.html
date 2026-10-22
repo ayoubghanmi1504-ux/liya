@@ -1,0 +1,1820 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- EDITAR AQUÍ: SEO básico de la landing -->
+  <title>Liyā Agency | Desarrollo Web y E-commerce</title>
+  <meta name="description" content="Liyā Agency — desarrollo web y e-commerce ultrarrápido. Landing pages, tiendas online y optimización para negocios en España y Marruecos.">
+  <meta name="theme-color" content="#08090A">
+  <meta name="color-scheme" content="dark">
+
+  <!-- Open Graph (previsualización al compartir) -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Liyā Agency | Desarrollo Web y E-commerce">
+  <meta property="og:description" content="Webs y tiendas online ultrarrápidas, optimizadas para móvil y listas para vender.">
+  <meta property="og:locale" content="es_ES">
+  <meta property="og:locale:alternate" content="fr_FR">
+
+  <meta property="og:url" content="https://liyagency.es/">
+  <link rel="canonical" href="https://liyagency.es/">
+
+  <!-- Versiones de idioma para SEO -->
+  <link rel="alternate" hreflang="es" href="https://liyagency.es/">
+  <link rel="alternate" hreflang="fr" href="https://liyagency.es/fr.html">
+  <link rel="alternate" hreflang="x-default" href="https://liyagency.es/">
+
+  <link rel="icon" href="assets/icons/favicon.svg?v=15" type="image/svg+xml">
+
+  <!-- Collage del hero: above the fold y reutilizado en varias tiles -->
+  <link rel="preload" as="image" href="assets/img/proyectos/avallier.jpg" type="image/jpeg">
+  <link rel="preload" as="image" href="assets/img/proyectos/telero.jpg" type="image/jpeg">
+  <link rel="preload" as="image" href="assets/img/proyectos/the-jochoys.jpg" type="image/jpeg">
+  <link rel="preload" as="image" href="assets/img/proyectos/isabel-malonda.jpg" type="image/jpeg">
+
+  <!-- Tipografías: display, texto y mono. EDITAR AQUÍ si cambias la identidad -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <!-- Orden importante: tokens → base → layout → componentes -->
+  <link rel="stylesheet" href="css/variables.css?v=15">
+  <link rel="stylesheet" href="css/base.css?v=15">
+  <link rel="stylesheet" href="css/layout.css?v=15">
+  <link rel="stylesheet" href="css/components.css?v=15">
+  <link rel="stylesheet" href="css/sections/hero.css?v=15">
+  <link rel="stylesheet" href="css/sections/services.css?v=15">
+  <link rel="stylesheet" href="css/sections/pricing.css?v=15">
+  <link rel="stylesheet" href="css/sections/portfolio.css?v=15">
+  <link rel="stylesheet" href="css/sections/contact.css?v=15">
+  <link rel="stylesheet" href="css/footer.css?v=15">
+
+  <!-- Detecta el idioma, guarda la preferencia y activa el selector ES / FR -->
+  <script src="js/language.js?v=15" defer></script>
+</head>
+
+<!-- id="top" permite que el logo vuelva arriba sin depender de una sección -->
+<body id="top">
+  <!-- Accesibilidad: primer elemento enfocable con teclado -->
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <!-- Fondo decorativo: glow verde + rejilla (puramente visual) -->
+  <div class="page-bg" aria-hidden="true"></div>
+
+  <!-- =========================================================================
+       HEADER / NAVBAR
+       Sticky, con blur al hacer scroll y menú overlay en móvil.
+       EDITAR AQUÍ: nombre de marca, enlaces, CTA y disponibilidad.
+       ========================================================================= -->
+  <header class="site-header" data-header>
+    <div class="site-header__inner container">
+
+      <!-- Marca / logo -->
+      <a class="brand" href="#top">
+        <svg class="brand__mark" viewBox="0 0 32 32" role="img" aria-hidden="true" focusable="false">
+          <defs>
+            <linearGradient id="brand-gradient" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#5CFFB0"></stop>
+              <stop offset="0.5" stop-color="#00FF87"></stop>
+              <stop offset="1" stop-color="#00C96B"></stop>
+            </linearGradient>
+          </defs>
+          <rect width="32" height="32" rx="9" fill="url(#brand-gradient)"></rect>
+          <path d="M11 9v14h10" fill="none" stroke="#04120D" stroke-width="2.6"
+                stroke-linecap="round" stroke-linejoin="round"></path>
+        </svg>
+        <span class="brand__name">Liyā <span class="brand__dot">Agency</span></span>
+      </a>
+
+      <!-- Navegación de escritorio (oculta por debajo de 960px) -->
+      <nav class="nav" aria-label="Navegación principal">
+        <ul class="nav__list">
+          <li><a class="nav__link" href="#servicios" data-nav-link>Servicios</a></li>
+          <li><a class="nav__link" href="#precios" data-nav-link>Precios</a></li>
+          <li><a class="nav__link" href="#portfolio" data-nav-link>Portfolio</a></li>
+          <li><a class="nav__link" href="#contacto" data-nav-link>Contacto</a></li>
+        </ul>
+      </nav>
+
+      <!-- Acciones: disponibilidad + CTA + hamburguesa -->
+      <div class="site-header__actions">
+        <div class="lang-switch" role="group" aria-label="Idioma">
+          <span class="lang-switch__current" aria-current="true">ES</span>
+          <a class="lang-switch__link" href="/fr.html" data-set-lang="fr" hreflang="fr" lang="fr" aria-label="Cambiar a francés">FR</a>
+        </div>
+
+        <p class="status">
+          <span class="status__dot" aria-hidden="true"></span>
+          2 plazas · Octubre
+        </p>
+
+        <a class="btn btn--primary btn--sm" href="#contacto">
+          Empezar proyecto
+          <svg class="btn__icon" viewBox="0 0 16 16" fill="none" aria-hidden="true" focusable="false">
+            <path d="M4 12L12 4M12 4H5.5M12 4v6.5" stroke="currentColor" stroke-width="1.6"
+                  stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </a>
+
+        <button
+          class="nav-toggle"
+          type="button"
+          data-nav-toggle
+          aria-expanded="false"
+          aria-controls="mobile-nav"
+          aria-label="Abrir menú"
+        >
+          <span class="nav-toggle__bars" aria-hidden="true">
+            <span></span>
+            <span></span>
+          </span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- =========================================================================
+       MENÚ MÓVIL
+       Overlay a pantalla completa. Lo controla js/modules/navigation.js.
+       El atributo [hidden] lo mantiene fuera del foco cuando está cerrado.
+       ========================================================================= -->
+  <div class="mobile-nav" id="mobile-nav" data-mobile-nav hidden>
+    <nav aria-label="Navegación móvil">
+      <ul class="mobile-nav__list">
+        <li class="mobile-nav__item">
+          <a class="mobile-nav__link" href="#top">
+            <span class="mobile-nav__index" aria-hidden="true">01</span>Inicio
+          </a>
+        </li>
+        <li class="mobile-nav__item">
+          <a class="mobile-nav__link" href="#servicios">
+            <span class="mobile-nav__index" aria-hidden="true">02</span>Servicios
+          </a>
+        </li>
+        <li class="mobile-nav__item">
+          <a class="mobile-nav__link" href="#precios">
+            <span class="mobile-nav__index" aria-hidden="true">03</span>Precios
+          </a>
+        </li>
+        <li class="mobile-nav__item">
+          <a class="mobile-nav__link" href="#portfolio">
+            <span class="mobile-nav__index" aria-hidden="true">04</span>Portfolio
+          </a>
+        </li>
+        <li class="mobile-nav__item">
+          <a class="mobile-nav__link" href="#contacto">
+            <span class="mobile-nav__index" aria-hidden="true">05</span>Contacto
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="mobile-nav__footer">
+      <p class="mobile-nav__meta">2 plazas disponibles · Octubre</p>
+      <a class="mobile-nav__mail" href="mailto:hola@liyagency.es">hola@liyagency.es</a>
+      <a class="btn btn--primary" href="#contacto">
+        Empezar proyecto
+        <svg class="btn__icon" viewBox="0 0 16 16" fill="none" aria-hidden="true" focusable="false">
+          <path d="M4 12L12 4M12 4H5.5M12 4v6.5" stroke="currentColor" stroke-width="1.6"
+                stroke-linecap="round" stroke-linejoin="round"></path>
+        </svg>
+      </a>
+    </div>
+  </div>
+
+  <main class="site-main" id="contenido">
+    <!-- =========================================================================
+         HERO · BLOQUE 2
+         Titular centrado sobre un collage de capturas del portfolio.
+         EDITAR AQUÍ: titular, subtítulo, CTAs, stats y marcas clientas.
+         El collage son capturas de cuatro proyectos reales en assets/img/proyectos/.
+         ========================================================================= -->
+    <section class="hero" id="inicio" data-hero>
+      <!-- Collage decorativo: capturas de proyectos del portfolio -->
+      <div class="hero__collage" data-hero-collage aria-hidden="true">
+        <div class="hero-collage__tile hero-collage__tile--avallier"></div>
+        <div class="hero-collage__tile hero-collage__tile--telero"></div>
+        <div class="hero-collage__tile hero-collage__tile--jochoys"></div>
+        <div class="hero-collage__tile hero-collage__tile--isabel"></div>
+        <div class="hero-collage__tile hero-collage__tile--jochoys"></div>
+        <div class="hero-collage__tile hero-collage__tile--avallier"></div>
+        <div class="hero-collage__tile hero-collage__tile--isabel"></div>
+        <div class="hero-collage__tile hero-collage__tile--telero"></div>
+        <div class="hero-collage__tile hero-collage__tile--telero"></div>
+        <div class="hero-collage__tile hero-collage__tile--isabel"></div>
+        <div class="hero-collage__tile hero-collage__tile--avallier"></div>
+        <div class="hero-collage__tile hero-collage__tile--jochoys"></div>
+      </div>
+
+      <!-- Oscurece el centro para que el texto respire sobre el collage -->
+      <div class="hero__veil" aria-hidden="true"></div>
+
+      <div class="container hero__inner">
+        <div class="hero__content">
+          <p class="hero__badge">
+            <span class="hero__badge-dot" aria-hidden="true"></span>
+            2 plazas disponibles · Octubre
+          </p>
+
+          <h1 class="hero__title">
+            <span class="hero__title-line">Webs de <span class="hero__title-accent">alto rendimiento.</span></span>
+            <span class="hero__title-line hero__title-tail">Resultados desde el primer clic.</span>
+          </h1>
+
+          <p class="hero__lead">
+            No hacemos simples maquetas. Desarrollamos páginas web y tiendas online ultrarrápidas,
+            optimizadas para móvil y listas para multiplicar tus ventas en España y Marruecos.
+          </p>
+
+          <div class="hero__actions">
+            <a class="btn btn--primary btn--lg" href="#precios">
+              Ver tarifas
+              <svg class="btn__icon" viewBox="0 0 16 16" fill="none" aria-hidden="true" focusable="false">
+                <path d="M2.5 8h11M9 3.5 13.5 8 9 12.5" stroke="currentColor" stroke-width="1.6"
+                      stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+            </a>
+
+            <a
+              class="btn btn--ghost btn--lg"
+              href="https://wa.me/34600000000?text=Hola%20Liy%C4%81%20Agency%2C%20me%20gustar%C3%ADa%20hablar%20de%20un%20proyecto."
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Contactar por WhatsApp
+              <svg class="btn__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                <path d="M20 11.5a8 8 0 0 1-11.7 7.1L4 20l1.4-4.2A8 8 0 1 1 20 11.5Z"
+                      stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"></path>
+                <circle cx="9" cy="11.5" r="1" fill="currentColor"></circle>
+                <circle cx="12.5" cy="11.5" r="1" fill="currentColor"></circle>
+                <circle cx="16" cy="11.5" r="1" fill="currentColor"></circle>
+              </svg>
+            </a>
+          </div>
+
+          <ul class="hero__stats" aria-label="Resultados medios de Liyā Agency">
+            <li>
+              <strong>+40</strong>
+              <span>proyectos lanzados</span>
+            </li>
+            <li>
+              <strong>0,8 s</strong>
+              <span>carga media · LCP</span>
+            </li>
+            <li>
+              <strong>+38%</strong>
+              <span>conversión media</span>
+            </li>
+          </ul>
+
+          <ul class="hero__guarantees" aria-label="Condiciones del servicio">
+            <li>Diseño 100% a medida</li>
+            <li>Entrega en 3–4 semanas</li>
+            <li>Sin permanencias</li>
+          </ul>
+        </div>
+
+        <!-- Prueba social: proyectos del portfolio -->
+        <div class="hero__clients">
+          <p class="hero__clients-label">Marcas que ya venden con Liyā</p>
+          <ul class="hero__clients-list" aria-label="Marcas que confían en Liyā Agency">
+            <li class="hero-client hero-client--avallier">Avallier</li>
+            <li class="hero-client hero-client--jochoys">The Jochoy's</li>
+            <li class="hero-client hero-client--telero">Telero</li>
+            <li class="hero-client hero-client--isabel">Isabel Malonda</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         SERVICIOS · BLOQUE 3
+         Tres líneas de trabajo. EDITAR AQUÍ: títulos, descripciones y bullets.
+         ========================================================================= -->
+    <section class="section services" id="servicios" aria-labelledby="servicios-title">
+      <div class="container">
+        <div class="section__head" data-reveal>
+          <p class="eyebrow">Servicios</p>
+          <h2 class="section__title" id="servicios-title">
+            Diseño, código y estrategia<br>
+            <span class="text-accent">para vender mejor.</span>
+          </h2>
+          <p class="section__lead">
+            No vendemos plantillas: construimos la herramienta que tu negocio necesita
+            para crecer, del primer boceto a la última integración.
+          </p>
+        </div>
+
+        <div class="services__grid">
+
+          <!-- Servicio 01 -->
+          <article class="service-card" data-reveal style="--reveal-delay: 0ms">
+            <div class="service-card__top">
+              <span class="service-card__index" aria-hidden="true">01</span>
+              <span class="service-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                     stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="4" width="18" height="16" rx="2.5"></rect>
+                  <path d="M3 9h18"></path>
+                  <path d="m9 14-2 2 2 2M15 14l2 2-2 2"></path>
+                </svg>
+              </span>
+            </div>
+
+            <h3 class="service-card__title">Landing Pages de Alta Conversión</h3>
+            <p class="service-card__text">
+              Páginas de un solo vistazo diseñadas para captar clientes. Carga instantánea,
+              diseño moderno y botón de contacto directo a tu WhatsApp.
+            </p>
+
+            <ul class="service-card__list">
+              <li>
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="m3.5 8.5 3 3 6-7" stroke="currentColor" stroke-width="1.7"
+                        stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+                Diseño de una sola página
+              </li>
+              <li>
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="m3.5 8.5 3 3 6-7" stroke="currentColor" stroke-width="1.7"
+                        stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+                Botón y formulario de WhatsApp
+              </li>
+              <li>
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="m3.5 8.5 3 3 6-7" stroke="currentColor" stroke-width="1.7"
+                        stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+                Carga ultrarrápida y SEO local
+              </li>
+            </ul>
+
+            <a class="service-card__link" href="#precios">
+              Ver qué incluye
+              <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M2.5 8h11M9 3.5 13.5 8 9 12.5" stroke="currentColor" stroke-width="1.6"
+                      stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+            </a>
+          </article>
+
+          <!-- Servicio 02 -->
+          <article class="service-card" data-reveal style="--reveal-delay: 90ms">
+            <div class="service-card__top">
+              <span class="service-card__index" aria-hidden="true">02</span>
+              <span class="service-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                     stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M5.5 8h13l-1.1 12H6.6L5.5 8Z"></path>
+                  <path d="M9 8V6a3 3 0 0 1 6 0v2"></path>
+                </svg>
+              </span>
+            </div>
+
+            <h3 class="service-card__title">Tiendas Online (E-commerce)</h3>
+            <p class="service-card__text">
+              Tu catálogo vendiendo 24/7. Pasarelas de pago seguras, gestión de pedidos
+              simplificada y opción de tienda multilingüe.
+            </p>
+
+            <ul class="service-card__list">
+              <li>
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="m3.5 8.5 3 3 6-7" stroke="currentColor" stroke-width="1.7"
+                        stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+                Catálogo y pagos seguros
+              </li>
+              <li>
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="m3.5 8.5 3 3 6-7" stroke="currentColor" stroke-width="1.7"
+                        stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+                Gestión de pedidos simplificada
+              </li>
+              <li>
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="m3.5 8.5 3 3 6-7" stroke="currentColor" stroke-width="1.7"
+                        stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+                Tienda multilingüe ES / FR
+              </li>
+            </ul>
+
+            <a class="service-card__link" href="#precios">
+              Ver qué incluye
+              <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M2.5 8h11M9 3.5 13.5 8 9 12.5" stroke="currentColor" stroke-width="1.6"
+                      stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+            </a>
+          </article>
+
+          <!-- Servicio 03 -->
+          <article class="service-card" data-reveal style="--reveal-delay: 180ms">
+            <div class="service-card__top">
+              <span class="service-card__index" aria-hidden="true">03</span>
+              <span class="service-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                     stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 4v16h16"></path>
+                  <path d="m7 15 4-5 3 3 5-6"></path>
+                  <path d="M19 7h-3.5M19 7v3.5"></path>
+                </svg>
+              </span>
+            </div>
+
+            <h3 class="service-card__title">Optimización y Rendimiento</h3>
+            <p class="service-card__text">
+              Si tu web actual es lenta o no genera contactos, auditamos su código,
+              modernizamos su interfaz y la hacemos volar en móviles.
+            </p>
+
+            <ul class="service-card__list">
+              <li>
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="m3.5 8.5 3 3 6-7" stroke="currentColor" stroke-width="1.7"
+                        stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+                Auditoría técnica de velocidad
+              </li>
+              <li>
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="m3.5 8.5 3 3 6-7" stroke="currentColor" stroke-width="1.7"
+                        stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+                Rediseño visual de la interfaz
+              </li>
+              <li>
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="m3.5 8.5 3 3 6-7" stroke="currentColor" stroke-width="1.7"
+                        stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+                Adaptación perfecta para móviles
+              </li>
+            </ul>
+
+            <a class="service-card__link" href="#precios">
+              Ver qué incluye
+              <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M2.5 8h11M9 3.5 13.5 8 9 12.5" stroke="currentColor" stroke-width="1.6"
+                      stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+            </a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         PRECIOS · BLOQUE 3
+         Tres planes transparentes. El central es el recomendado.
+         EDITAR AQUÍ: importes, features y textos de cada plan.
+         Los CTA guardan data-plan para prerrellenar el formulario del Bloque 5.
+         ========================================================================= -->
+    <section class="section pricing" id="precios" aria-labelledby="precios-title">
+      <div class="container">
+        <div class="section__head section__head--center" data-reveal>
+          <p class="eyebrow">Precios</p>
+          <h2 class="section__title" id="precios-title">
+            Precios claros.<br>
+            <span class="text-accent">Cero sorpresas.</span>
+          </h2>
+          <p class="section__lead">
+            Elige el punto de partida. Proyectos a medida, sin permanencia
+            y con un precio cerrado desde el primer día.
+          </p>
+        </div>
+
+        <div class="pricing__grid">
+
+          <!-- Plan Presencia -->
+          <article class="price-card" data-reveal style="--reveal-delay: 0ms">
+            <h3 class="price-card__name">Presencia</h3>
+            <p class="price-card__desc">
+              Ideal para servicios y pequeños negocios que quieren presencia profesional.
+            </p>
+
+            <p class="price-card__from">Precio</p>
+            <p class="price-card__amount">
+              399 <span class="price-card__currency">€</span>
+            </p>
+            <p class="price-card__note">Pago único</p>
+
+            <a class="btn btn--ghost" href="#contacto" data-plan="esencial">
+              Empezar con Presencia
+            </a>
+
+            <p class="price-card__features-title">Incluye</p>
+            <ul class="price-card__features">
+              <li>
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="m3.5 8.5 3 3 6-7" stroke="currentColor" stroke-width="1.7"
+                        stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+                Web One-Page (Diseño Móvil y PC)
+              </li>
+              <li>
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="m3.5 8.5 3 3 6-7" stroke="currentColor" stroke-width="1.7"
+                        stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+                Carga ultrarrápida garantizada
+              </li>
+              <li>
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="m3.5 8.5 3 3 6-7" stroke="currentColor" stroke-width="1.7"
+                        stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+                Botón flotante de WhatsApp
+              </li>
+              <li>
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="m3.5 8.5 3 3 6-7" stroke="currentColor" stroke-width="1.7"
+                        stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+                SEO local básico instalado
+              </li>
+            </ul>
+          </article>
+
+          <!-- Plan E-commerce (destacado) -->
+          <article class="price-card price-card--featured" data-reveal style="--reveal-delay: 100ms">
+            <span class="price-card__badge">Destacado</span>
+
+            <h3 class="price-card__name">E-commerce</h3>
+            <p class="price-card__desc">
+              Tu tienda online completa, lista para recibir pedidos.
+            </p>
+
+            <p class="price-card__from">Precio</p>
+            <p class="price-card__amount">
+              799 <span class="price-card__currency">€</span>
+            </p>
+            <p class="price-card__note">Pago único</p>
+
+            <a class="btn btn--primary" href="#contacto" data-plan="crecimiento">
+              Elegir E-commerce
+              <svg class="btn__icon" viewBox="0 0 16 16" fill="none" aria-hidden="true" focusable="false">
+                <path d="M4 12L12 4M12 4H5.5M12 4v6.5" stroke="currentColor" stroke-width="1.6"
+                      stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+            </a>
+
+            <p class="price-card__features-title">Incluye</p>
+            <ul class="price-card__features">
+              <li>
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="m3.5 8.5 3 3 6-7" stroke="currentColor" stroke-width="1.7"
+                        stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+                Catálogo de productos interactivo
+              </li>
+              <li>
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="m3.5 8.5 3 3 6-7" stroke="currentColor" stroke-width="1.7"
+                        stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+                Pagos con tarjeta o Contra reembolso
+              </li>
+              <li>
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="m3.5 8.5 3 3 6-7" stroke="currentColor" stroke-width="1.7"
+                        stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+                Panel de gestión fácil de usar
+              </li>
+              <li>
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="m3.5 8.5 3 3 6-7" stroke="currentColor" stroke-width="1.7"
+                        stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+                Adaptable a Español y Francés
+              </li>
+            </ul>
+          </article>
+
+          <!-- Plan Optimización -->
+          <article class="price-card" data-reveal style="--reveal-delay: 200ms">
+            <h3 class="price-card__name">Optimización</h3>
+            <p class="price-card__desc">
+              Dale una segunda vida a tu web actual sin empezar de cero.
+            </p>
+
+            <p class="price-card__from">Precio</p>
+            <p class="price-card__amount">
+              99 <span class="price-card__currency">€</span>
+            </p>
+            <p class="price-card__note">Pago único</p>
+
+            <a class="btn btn--ghost" href="#contacto" data-plan="pro">
+              Solicitar optimización
+            </a>
+
+            <p class="price-card__features-title">Incluye</p>
+            <ul class="price-card__features">
+              <li>
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="m3.5 8.5 3 3 6-7" stroke="currentColor" stroke-width="1.7"
+                        stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+                Auditoría técnica de velocidad
+              </li>
+              <li>
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="m3.5 8.5 3 3 6-7" stroke="currentColor" stroke-width="1.7"
+                        stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+                Rediseño visual de la interfaz
+              </li>
+              <li>
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="m3.5 8.5 3 3 6-7" stroke="currentColor" stroke-width="1.7"
+                        stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+                Adaptación perfecta para móviles
+              </li>
+            </ul>
+          </article>
+        </div>
+
+        <ul class="pricing__guarantees" data-reveal>
+          <li>
+            <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="m3.5 8.5 3 3 6-7" stroke="currentColor" stroke-width="1.7"
+                    stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+            Pago único, sin cuotas
+          </li>
+          <li>
+            <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="m3.5 8.5 3 3 6-7" stroke="currentColor" stroke-width="1.7"
+                    stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+            Presupuesto cerrado antes de empezar
+          </li>
+          <li>
+            <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="m3.5 8.5 3 3 6-7" stroke="currentColor" stroke-width="1.7"
+                    stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+            Sin permanencia
+          </li>
+        </ul>
+
+        <p class="pricing__fineprint" data-reveal>
+          Dominio y hosting aparte · Presupuesto cerrado antes de empezar.
+        </p>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         PORTFOLIO · BLOQUE 4
+         Carrusel editorial filtrable + modal de detalle. Cada card muestra una
+         captura real del proyecto dentro de un marco de navegador. Las capturas
+         viven en assets/img/proyectos y no enlazan a webs externas.
+         EDITAR AQUÍ: nombre, categoría, año y descripción de cada card.
+         El detalle ampliado vive en js/modules/portfolio.js → PROJECTS.
+         ========================================================================= -->
+    <section class="section portfolio" id="portfolio" aria-labelledby="portfolio-title">
+      <div class="container">
+        <div class="portfolio__head" data-reveal>
+          <div class="portfolio__heading">
+            <p class="eyebrow">Portfolio</p>
+            <h2 class="section__title portfolio__title" id="portfolio-title">
+              Nada de plantillas.<br>
+              <span class="text-accent">Todo a medida.</span>
+            </h2>
+          </div>
+
+          <div class="portfolio__aside">
+            <p class="portfolio__lead">
+              Webs, tiendas y landings construidas desde cero. Desliza, abre
+              cada caso y mira las decisiones que hay detrás.
+            </p>
+
+            <div class="portfolio__controls">
+              <button class="portfolio__arrow" type="button" data-portfolio-prev aria-label="Proyecto anterior" disabled>
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="M13 8H3M7 4 3 8l4 4" stroke="currentColor" stroke-width="1.7"
+                        stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+              </button>
+              <p class="portfolio__counter" aria-hidden="true">
+                <b data-portfolio-current>01</b>
+                <span>/ <span data-portfolio-total>12</span></span>
+              </p>
+              <button class="portfolio__arrow" type="button" data-portfolio-next aria-label="Proyecto siguiente">
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.7"
+                        stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Filtros: data-filter coincide con data-category de cada card -->
+        <div class="portfolio__toolbar" data-reveal>
+          <div class="portfolio__filters" role="group" aria-label="Filtrar proyectos por categoría">
+            <button class="portfolio__filter" type="button" data-filter="all" aria-pressed="true">
+              Todos <span aria-hidden="true">12</span>
+            </button>
+            <button class="portfolio__filter" type="button" data-filter="restauracion" aria-pressed="false">
+              Restauración <span aria-hidden="true">04</span>
+            </button>
+            <button class="portfolio__filter" type="button" data-filter="bienestar" aria-pressed="false">
+              Bienestar <span aria-hidden="true">03</span>
+            </button>
+            <button class="portfolio__filter" type="button" data-filter="comercio" aria-pressed="false">
+              Comercio <span aria-hidden="true">02</span>
+            </button>
+            <button class="portfolio__filter" type="button" data-filter="servicios" aria-pressed="false">
+              Servicios <span aria-hidden="true">03</span>
+            </button>
+          </div>
+          <p class="portfolio__note">Selección 2024 — 2026 · 12 proyectos · Desliza o usa las flechas</p>
+          <p class="sr-only" role="status" aria-live="polite" data-portfolio-status>
+            Mostrando 12 proyectos.
+          </p>
+        </div>
+
+        <div class="portfolio__rail" data-portfolio-rail role="region" aria-label="Proyectos destacados" tabindex="0">
+          <div class="portfolio__track" data-portfolio-track>
+
+            <!-- Caso 01 · Avallier -->
+            <article
+              class="project-card"
+              data-project-card
+              data-project="avallier"
+              data-category="restauracion"
+              data-category-label="Alta gastronomía"
+              data-year="2026"
+              data-title="Avallier"
+            >
+              <div class="project-card__media" aria-hidden="true">
+                <div class="project-card__topline">
+                  <span>01 · Alta gastronomía</span>
+                  <span>avallier.es</span>
+                </div>
+                <p class="project-card__headline">El arte de<br><em>componer.</em></p>
+                <div class="project-screen">
+                  <div class="ps-bar">
+                    <span class="ps-dots"><i></i><i></i><i></i></span>
+                    <span class="ps-url">avallier.es</span>
+                  </div>
+                  <img
+                    class="ps-shot"
+                    src="assets/img/proyectos/avallier.jpg"
+                    alt=""
+                    width="1280"
+                    height="840"
+                    loading="lazy"
+                    decoding="async"
+                    draggable="false"
+                  >
+                </div>
+              </div>
+
+              <div class="project-card__body">
+                <div>
+                  <p class="project-card__meta"><span>Alta gastronomía</span><span>2026</span></p>
+                  <h3 class="project-card__title">Avallier</h3>
+                  <p class="project-card__desc">Cocina de autor con carta, bodega y reservas.</p>
+                </div>
+                <span class="project-card__arrow" aria-hidden="true">
+                  <svg viewBox="0 0 16 16" fill="none">
+                    <path d="M4 12 12 4M12 4H5.5M12 4v6.5" stroke="currentColor" stroke-width="1.7"
+                          stroke-linecap="round" stroke-linejoin="round"></path>
+                  </svg>
+                </span>
+              </div>
+
+              <button class="project-card__open" type="button" data-project-open
+                      aria-label="Ver caso de Avallier"></button>
+            </article>
+
+            <!-- Caso 02 · Noma Coffee -->
+            <article
+              class="project-card"
+              data-project-card
+              data-project="noma-coffee"
+              data-category="comercio"
+              data-category-label="Café de especialidad"
+              data-year="2026"
+              data-title="Noma Coffee"
+            >
+              <div class="project-card__media" aria-hidden="true">
+                <div class="project-card__topline">
+                  <span>02 · Café de especialidad</span>
+                  <span>nomacoffee.es</span>
+                </div>
+                <p class="project-card__headline">Café de origen.<br><em>Sin rodeos.</em></p>
+                <div class="project-screen">
+                  <div class="ps-bar">
+                    <span class="ps-dots"><i></i><i></i><i></i></span>
+                    <span class="ps-url">nomacoffee.es</span>
+                  </div>
+                  <img
+                    class="ps-shot"
+                    src="assets/img/proyectos/noma-coffee.jpg"
+                    alt=""
+                    width="1280"
+                    height="840"
+                    loading="lazy"
+                    decoding="async"
+                    draggable="false"
+                  >
+                </div>
+              </div>
+
+              <div class="project-card__body">
+                <div>
+                  <p class="project-card__meta"><span>Café de especialidad</span><span>2026</span></p>
+                  <h3 class="project-card__title">Noma Coffee</h3>
+                  <p class="project-card__desc">Tienda online y suscripción de café de especialidad.</p>
+                </div>
+                <span class="project-card__arrow" aria-hidden="true">
+                  <svg viewBox="0 0 16 16" fill="none">
+                    <path d="M4 12 12 4M12 4H5.5M12 4v6.5" stroke="currentColor" stroke-width="1.7"
+                          stroke-linecap="round" stroke-linejoin="round"></path>
+                  </svg>
+                </span>
+              </div>
+
+              <button class="project-card__open" type="button" data-project-open
+                      aria-label="Ver caso de Noma Coffee"></button>
+            </article>
+
+            <!-- Caso 03 · The Jochoy&#x27;s -->
+            <article
+              class="project-card"
+              data-project-card
+              data-project="the-jochoys"
+              data-category="restauracion"
+              data-category-label="Street food"
+              data-year="2025"
+              data-title="The Jochoy&#x27;s"
+            >
+              <div class="project-card__media" aria-hidden="true">
+                <div class="project-card__topline">
+                  <span>03 · Street food</span>
+                  <span>thejochoys.es</span>
+                </div>
+                <p class="project-card__headline">Streetfood<br><em>con clase.</em></p>
+                <div class="project-screen">
+                  <div class="ps-bar">
+                    <span class="ps-dots"><i></i><i></i><i></i></span>
+                    <span class="ps-url">thejochoys.es</span>
+                  </div>
+                  <img
+                    class="ps-shot"
+                    src="assets/img/proyectos/the-jochoys.jpg"
+                    alt=""
+                    width="1280"
+                    height="840"
+                    loading="lazy"
+                    decoding="async"
+                    draggable="false"
+                  >
+                </div>
+              </div>
+
+              <div class="project-card__body">
+                <div>
+                  <p class="project-card__meta"><span>Street food</span><span>2025</span></p>
+                  <h3 class="project-card__title">The Jochoy&#x27;s</h3>
+                  <p class="project-card__desc">Burgers, birras y cultura urbana en Galicia.</p>
+                </div>
+                <span class="project-card__arrow" aria-hidden="true">
+                  <svg viewBox="0 0 16 16" fill="none">
+                    <path d="M4 12 12 4M12 4H5.5M12 4v6.5" stroke="currentColor" stroke-width="1.7"
+                          stroke-linecap="round" stroke-linejoin="round"></path>
+                  </svg>
+                </span>
+              </div>
+
+              <button class="project-card__open" type="button" data-project-open
+                      aria-label="Ver caso de The Jochoy&#x27;s"></button>
+            </article>
+
+            <!-- Caso 04 · Isabel Malonda -->
+            <article
+              class="project-card"
+              data-project-card
+              data-project="isabel-malonda"
+              data-category="bienestar"
+              data-category-label="Yoga Iyengar"
+              data-year="2025"
+              data-title="Isabel Malonda"
+            >
+              <div class="project-card__media" aria-hidden="true">
+                <div class="project-card__topline">
+                  <span>04 · Yoga Iyengar</span>
+                  <span>yogaisabelmalonda.es</span>
+                </div>
+                <p class="project-card__headline">Respira.<br><em>Alinéate.</em></p>
+                <div class="project-screen">
+                  <div class="ps-bar">
+                    <span class="ps-dots"><i></i><i></i><i></i></span>
+                    <span class="ps-url">yogaisabelmalonda.es</span>
+                  </div>
+                  <img
+                    class="ps-shot"
+                    src="assets/img/proyectos/isabel-malonda.jpg"
+                    alt=""
+                    width="1280"
+                    height="840"
+                    loading="lazy"
+                    decoding="async"
+                    draggable="false"
+                  >
+                </div>
+              </div>
+
+              <div class="project-card__body">
+                <div>
+                  <p class="project-card__meta"><span>Yoga Iyengar</span><span>2025</span></p>
+                  <h3 class="project-card__title">Isabel Malonda</h3>
+                  <p class="project-card__desc">Una escuela de yoga con una web que transmite calma.</p>
+                </div>
+                <span class="project-card__arrow" aria-hidden="true">
+                  <svg viewBox="0 0 16 16" fill="none">
+                    <path d="M4 12 12 4M12 4H5.5M12 4v6.5" stroke="currentColor" stroke-width="1.7"
+                          stroke-linecap="round" stroke-linejoin="round"></path>
+                  </svg>
+                </span>
+              </div>
+
+              <button class="project-card__open" type="button" data-project-open
+                      aria-label="Ver caso de Isabel Malonda"></button>
+            </article>
+
+            <!-- Caso 05 · Telero -->
+            <article
+              class="project-card"
+              data-project-card
+              data-project="telero"
+              data-category="restauracion"
+              data-category-label="Cocina española"
+              data-year="2025"
+              data-title="Telero"
+            >
+              <div class="project-card__media" aria-hidden="true">
+                <div class="project-card__topline">
+                  <span>05 · Cocina española</span>
+                  <span>restaurantetelero.es</span>
+                </div>
+                <p class="project-card__headline">Tradición<br><em>a la brasa.</em></p>
+                <div class="project-screen">
+                  <div class="ps-bar">
+                    <span class="ps-dots"><i></i><i></i><i></i></span>
+                    <span class="ps-url">restaurantetelero.es</span>
+                  </div>
+                  <img
+                    class="ps-shot"
+                    src="assets/img/proyectos/telero.jpg"
+                    alt=""
+                    width="1280"
+                    height="840"
+                    loading="lazy"
+                    decoding="async"
+                    draggable="false"
+                  >
+                </div>
+              </div>
+
+              <div class="project-card__body">
+                <div>
+                  <p class="project-card__meta"><span>Cocina española</span><span>2025</span></p>
+                  <h3 class="project-card__title">Telero</h3>
+                  <p class="project-card__desc">Tapas, arroces y brasa con una web cálida.</p>
+                </div>
+                <span class="project-card__arrow" aria-hidden="true">
+                  <svg viewBox="0 0 16 16" fill="none">
+                    <path d="M4 12 12 4M12 4H5.5M12 4v6.5" stroke="currentColor" stroke-width="1.7"
+                          stroke-linecap="round" stroke-linejoin="round"></path>
+                  </svg>
+                </span>
+              </div>
+
+              <button class="project-card__open" type="button" data-project-open
+                      aria-label="Ver caso de Telero"></button>
+            </article>
+
+            <!-- Caso 06 · Kite Skin -->
+            <article
+              class="project-card"
+              data-project-card
+              data-project="kite-skin"
+              data-category="comercio"
+              data-category-label="Skincare"
+              data-year="2025"
+              data-title="Kite Skin"
+            >
+              <div class="project-card__media" aria-hidden="true">
+                <div class="project-card__topline">
+                  <span>06 · Skincare</span>
+                  <span>kiteskin.es</span>
+                </div>
+                <p class="project-card__headline">Piel sana.<br><em>Rutina simple.</em></p>
+                <div class="project-screen">
+                  <div class="ps-bar">
+                    <span class="ps-dots"><i></i><i></i><i></i></span>
+                    <span class="ps-url">kiteskin.es</span>
+                  </div>
+                  <img
+                    class="ps-shot"
+                    src="assets/img/proyectos/kite-skin.jpg"
+                    alt=""
+                    width="1280"
+                    height="840"
+                    loading="lazy"
+                    decoding="async"
+                    draggable="false"
+                  >
+                </div>
+              </div>
+
+              <div class="project-card__body">
+                <div>
+                  <p class="project-card__meta"><span>Skincare</span><span>2025</span></p>
+                  <h3 class="project-card__title">Kite Skin</h3>
+                  <p class="project-card__desc">E-commerce de skincare con rutina guiada.</p>
+                </div>
+                <span class="project-card__arrow" aria-hidden="true">
+                  <svg viewBox="0 0 16 16" fill="none">
+                    <path d="M4 12 12 4M12 4H5.5M12 4v6.5" stroke="currentColor" stroke-width="1.7"
+                          stroke-linecap="round" stroke-linejoin="round"></path>
+                  </svg>
+                </span>
+              </div>
+
+              <button class="project-card__open" type="button" data-project-open
+                      aria-label="Ver caso de Kite Skin"></button>
+            </article>
+
+            <!-- Caso 07 · Atlas Fitness -->
+            <article
+              class="project-card"
+              data-project-card
+              data-project="atlas-fitness"
+              data-category="bienestar"
+              data-category-label="Fitness"
+              data-year="2025"
+              data-title="Atlas Fitness"
+            >
+              <div class="project-card__media" aria-hidden="true">
+                <div class="project-card__topline">
+                  <span>07 · Fitness</span>
+                  <span>atlasfitness.es</span>
+                </div>
+                <p class="project-card__headline">Entrena.<br><em>Sin excusas.</em></p>
+                <div class="project-screen">
+                  <div class="ps-bar">
+                    <span class="ps-dots"><i></i><i></i><i></i></span>
+                    <span class="ps-url">atlasfitness.es</span>
+                  </div>
+                  <img
+                    class="ps-shot"
+                    src="assets/img/proyectos/atlas-fitness.jpg"
+                    alt=""
+                    width="1280"
+                    height="840"
+                    loading="lazy"
+                    decoding="async"
+                    draggable="false"
+                  >
+                </div>
+              </div>
+
+              <div class="project-card__body">
+                <div>
+                  <p class="project-card__meta"><span>Fitness</span><span>2025</span></p>
+                  <h3 class="project-card__title">Atlas Fitness</h3>
+                  <p class="project-card__desc">Captación y reservas para un gimnasio boutique.</p>
+                </div>
+                <span class="project-card__arrow" aria-hidden="true">
+                  <svg viewBox="0 0 16 16" fill="none">
+                    <path d="M4 12 12 4M12 4H5.5M12 4v6.5" stroke="currentColor" stroke-width="1.7"
+                          stroke-linecap="round" stroke-linejoin="round"></path>
+                  </svg>
+                </span>
+              </div>
+
+              <button class="project-card__open" type="button" data-project-open
+                      aria-label="Ver caso de Atlas Fitness"></button>
+            </article>
+
+            <!-- Caso 08 · Brasa &amp; Barrio -->
+            <article
+              class="project-card"
+              data-project-card
+              data-project="hamburgueseria"
+              data-category="restauracion"
+              data-category-label="Plantilla"
+              data-year="2024"
+              data-title="Brasa &amp; Barrio"
+            >
+              <div class="project-card__media" aria-hidden="true">
+                <div class="project-card__topline">
+                  <span>08 · Plantilla</span>
+                  <span>brasaybarrio.es</span>
+                </div>
+                <p class="project-card__headline">La mejor<br><em>del barrio.</em></p>
+                <div class="project-screen">
+                  <div class="ps-bar">
+                    <span class="ps-dots"><i></i><i></i><i></i></span>
+                    <span class="ps-url">brasaybarrio.es</span>
+                  </div>
+                  <img
+                    class="ps-shot"
+                    src="assets/img/proyectos/hamburgueseria.jpg"
+                    alt=""
+                    width="1280"
+                    height="840"
+                    loading="lazy"
+                    decoding="async"
+                    draggable="false"
+                  >
+                </div>
+              </div>
+
+              <div class="project-card__body">
+                <div>
+                  <p class="project-card__meta"><span>Plantilla</span><span>2024</span></p>
+                  <h3 class="project-card__title">Brasa &amp; Barrio</h3>
+                  <p class="project-card__desc">Sistema visual para hamburgueserías artesanales.</p>
+                </div>
+                <span class="project-card__arrow" aria-hidden="true">
+                  <svg viewBox="0 0 16 16" fill="none">
+                    <path d="M4 12 12 4M12 4H5.5M12 4v6.5" stroke="currentColor" stroke-width="1.7"
+                          stroke-linecap="round" stroke-linejoin="round"></path>
+                  </svg>
+                </span>
+              </div>
+
+              <button class="project-card__open" type="button" data-project-open
+                      aria-label="Ver caso de Brasa &amp; Barrio"></button>
+            </article>
+
+            <!-- Caso 09 · Lumen Dental -->
+            <article
+              class="project-card"
+              data-project-card
+              data-project="lumen-dental"
+              data-category="bienestar"
+              data-category-label="Clínica dental"
+              data-year="2026"
+              data-title="Lumen Dental"
+            >
+              <div class="project-card__media" aria-hidden="true">
+                <div class="project-card__topline">
+                  <span>09 · Clínica dental</span>
+                  <span>lumendental.es</span>
+                </div>
+                <p class="project-card__headline">Sonríe<br><em>sin miedo.</em></p>
+                <div class="project-screen">
+                  <div class="ps-bar">
+                    <span class="ps-dots"><i></i><i></i><i></i></span>
+                    <span class="ps-url">lumendental.es</span>
+                  </div>
+                  <img
+                    class="ps-shot"
+                    src="assets/img/proyectos/lumen-dental.jpg"
+                    alt=""
+                    width="1280"
+                    height="840"
+                    loading="lazy"
+                    decoding="async"
+                    draggable="false"
+                  >
+                </div>
+              </div>
+
+              <div class="project-card__body">
+                <div>
+                  <p class="project-card__meta"><span>Clínica dental</span><span>2026</span></p>
+                  <h3 class="project-card__title">Lumen Dental</h3>
+                  <p class="project-card__desc">Cita online y un tratamiento explicado sin sorpresas.</p>
+                </div>
+                <span class="project-card__arrow" aria-hidden="true">
+                  <svg viewBox="0 0 16 16" fill="none">
+                    <path d="M4 12 12 4M12 4H5.5M12 4v6.5" stroke="currentColor" stroke-width="1.7"
+                          stroke-linecap="round" stroke-linejoin="round"></path>
+                  </svg>
+                </span>
+              </div>
+
+              <button class="project-card__open" type="button" data-project-open
+                      aria-label="Ver caso de Lumen Dental"></button>
+            </article>
+
+            <!-- Caso 10 · Sur Studio -->
+            <article
+              class="project-card"
+              data-project-card
+              data-project="sur-studio"
+              data-category="servicios"
+              data-category-label="Arquitectura"
+              data-year="2024"
+              data-title="Sur Studio"
+            >
+              <div class="project-card__media" aria-hidden="true">
+                <div class="project-card__topline">
+                  <span>10 · Arquitectura</span>
+                  <span>surstudio.es</span>
+                </div>
+                <p class="project-card__headline">Menos ruido.<br><em>Más espacio.</em></p>
+                <div class="project-screen">
+                  <div class="ps-bar">
+                    <span class="ps-dots"><i></i><i></i><i></i></span>
+                    <span class="ps-url">surstudio.es</span>
+                  </div>
+                  <img
+                    class="ps-shot"
+                    src="assets/img/proyectos/sur-studio.jpg"
+                    alt=""
+                    width="1280"
+                    height="840"
+                    loading="lazy"
+                    decoding="async"
+                    draggable="false"
+                  >
+                </div>
+              </div>
+
+              <div class="project-card__body">
+                <div>
+                  <p class="project-card__meta"><span>Arquitectura</span><span>2024</span></p>
+                  <h3 class="project-card__title">Sur Studio</h3>
+                  <p class="project-card__desc">Estudio de arquitectura con portfolio editorial.</p>
+                </div>
+                <span class="project-card__arrow" aria-hidden="true">
+                  <svg viewBox="0 0 16 16" fill="none">
+                    <path d="M4 12 12 4M12 4H5.5M12 4v6.5" stroke="currentColor" stroke-width="1.7"
+                          stroke-linecap="round" stroke-linejoin="round"></path>
+                  </svg>
+                </span>
+              </div>
+
+              <button class="project-card__open" type="button" data-project-open
+                      aria-label="Ver caso de Sur Studio"></button>
+            </article>
+
+            <!-- Caso 11 · Marea -->
+            <article
+              class="project-card"
+              data-project-card
+              data-project="marea"
+              data-category="servicios"
+              data-category-label="Hotel boutique"
+              data-year="2026"
+              data-title="Marea"
+            >
+              <div class="project-card__media" aria-hidden="true">
+                <div class="project-card__topline">
+                  <span>11 · Hotel boutique</span>
+                  <span>hotelmarea.es</span>
+                </div>
+                <p class="project-card__headline">El mar<br><em>como rutina.</em></p>
+                <div class="project-screen">
+                  <div class="ps-bar">
+                    <span class="ps-dots"><i></i><i></i><i></i></span>
+                    <span class="ps-url">hotelmarea.es</span>
+                  </div>
+                  <img
+                    class="ps-shot"
+                    src="assets/img/proyectos/marea.jpg"
+                    alt=""
+                    width="1280"
+                    height="840"
+                    loading="lazy"
+                    decoding="async"
+                    draggable="false"
+                  >
+                </div>
+              </div>
+
+              <div class="project-card__body">
+                <div>
+                  <p class="project-card__meta"><span>Hotel boutique</span><span>2026</span></p>
+                  <h3 class="project-card__title">Marea</h3>
+                  <p class="project-card__desc">Hotel boutique con reservas directas y alma local.</p>
+                </div>
+                <span class="project-card__arrow" aria-hidden="true">
+                  <svg viewBox="0 0 16 16" fill="none">
+                    <path d="M4 12 12 4M12 4H5.5M12 4v6.5" stroke="currentColor" stroke-width="1.7"
+                          stroke-linecap="round" stroke-linejoin="round"></path>
+                  </svg>
+                </span>
+              </div>
+
+              <button class="project-card__open" type="button" data-project-open
+                      aria-label="Ver caso de Marea"></button>
+            </article>
+
+            <!-- Caso 12 · Casa Verde -->
+            <article
+              class="project-card"
+              data-project-card
+              data-project="casa-verde"
+              data-category="servicios"
+              data-category-label="Interiorismo"
+              data-year="2025"
+              data-title="Casa Verde"
+            >
+              <div class="project-card__media" aria-hidden="true">
+                <div class="project-card__topline">
+                  <span>12 · Interiorismo</span>
+                  <span>casa-verde.es</span>
+                </div>
+                <p class="project-card__headline">Espacios<br><em>que respiran.</em></p>
+                <div class="project-screen">
+                  <div class="ps-bar">
+                    <span class="ps-dots"><i></i><i></i><i></i></span>
+                    <span class="ps-url">casa-verde.es</span>
+                  </div>
+                  <img
+                    class="ps-shot"
+                    src="assets/img/proyectos/casa-verde.jpg"
+                    alt=""
+                    width="1280"
+                    height="840"
+                    loading="lazy"
+                    decoding="async"
+                    draggable="false"
+                  >
+                </div>
+              </div>
+
+              <div class="project-card__body">
+                <div>
+                  <p class="project-card__meta"><span>Interiorismo</span><span>2025</span></p>
+                  <h3 class="project-card__title">Casa Verde</h3>
+                  <p class="project-card__desc">Portfolio de interiorismo con identidad propia.</p>
+                </div>
+                <span class="project-card__arrow" aria-hidden="true">
+                  <svg viewBox="0 0 16 16" fill="none">
+                    <path d="M4 12 12 4M12 4H5.5M12 4v6.5" stroke="currentColor" stroke-width="1.7"
+                          stroke-linecap="round" stroke-linejoin="round"></path>
+                  </svg>
+                </span>
+              </div>
+
+              <button class="project-card__open" type="button" data-project-open
+                      aria-label="Ver caso de Casa Verde"></button>
+            </article>
+          </div>
+        </div>
+
+        <div class="portfolio__cta" data-reveal>
+          <div>
+            <p>¿El siguiente caso eres tú?</p>
+            <span>Cuéntanos qué tienes en mente. Respondemos en menos de 24 h.</span>
+          </div>
+          <a class="btn btn--ghost" href="#contacto">
+            Hablemos de tu proyecto
+            <svg class="btn__icon" viewBox="0 0 16 16" fill="none" aria-hidden="true" focusable="false">
+              <path d="M2.5 8h11M9 3.5 13.5 8 9 12.5" stroke="currentColor" stroke-width="1.6"
+                    stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         MODAL DE PROYECTO
+         <dialog> nativo: foco atrapado, Esc y backdrop gestionados por el navegador.
+         El contenido se rellena desde js/modules/portfolio.js.
+         ========================================================================= -->
+    <dialog class="project-modal" data-project-modal aria-labelledby="project-modal-title">
+      <button class="project-modal__close" type="button" data-modal-close aria-label="Cerrar detalle del proyecto">
+        <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="m4 4 8 8M12 4l-8 8" stroke="currentColor" stroke-width="1.6"
+                stroke-linecap="round"></path>
+        </svg>
+      </button>
+
+      <div class="project-modal__inner">
+        <div class="project-modal__preview" aria-hidden="true">
+          <div data-modal-preview></div>
+        </div>
+
+        <div class="project-modal__content">
+          <p class="sr-only" data-modal-status role="status" aria-live="polite"></p>
+          <p class="project-modal__meta" data-modal-meta></p>
+          <h3 class="project-modal__title" id="project-modal-title" data-modal-title></h3>
+          <p class="project-modal__desc" data-modal-desc></p>
+
+          <div class="project-modal__block">
+            <h4>El reto</h4>
+            <p data-modal-challenge></p>
+          </div>
+
+          <div class="project-modal__block">
+            <h4>La solución</h4>
+            <p data-modal-solution></p>
+          </div>
+
+          <div class="project-modal__block">
+            <h4>Qué hicimos</h4>
+            <ul class="project-modal__list" data-modal-deliverables></ul>
+          </div>
+
+          <div class="project-modal__stack" data-modal-stack></div>
+
+          <nav class="project-modal__nav" aria-label="Navegar entre proyectos">
+            <button class="project-modal__nav-btn" type="button" data-modal-prev>
+              <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M13 8H3M7 4 3 8l4 4" stroke="currentColor" stroke-width="1.6"
+                      stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+              Anterior
+            </button>
+            <p class="project-modal__position" aria-hidden="true">
+              <span data-modal-index>01</span> / <span data-modal-total>12</span>
+            </p>
+            <button class="project-modal__nav-btn" type="button" data-modal-next>
+              Siguiente
+              <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6"
+                      stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+            </button>
+          </nav>
+
+          <a class="btn btn--primary project-modal__cta" href="#contacto" data-modal-cta data-service="landing">
+            Quiero algo así
+            <svg class="btn__icon" viewBox="0 0 16 16" fill="none" aria-hidden="true" focusable="false">
+              <path d="M4 12 12 4M12 4H5.5M12 4v6.5" stroke="currentColor" stroke-width="1.6"
+                    stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </dialog>
+
+    <!-- =========================================================================
+         CONTACTO · BLOQUE 5
+         Cabecera centrada + formulario. Los CTA de precios (data-plan) y el del
+         portfolio (data-service) preseleccionan la opción correspondiente.
+         EDITAR AQUÍ: email, WhatsApp, textos, canales y campos del formulario.
+         ========================================================================= -->
+    <section class="section contact" id="contacto" aria-labelledby="contacto-title">
+      <div class="container">
+        <div class="contact__intro" data-reveal>
+          <p class="eyebrow contact__eyebrow">Contacto</p>
+
+          <p class="contact__badge">
+            <span class="contact__badge-dot" aria-hidden="true"></span>
+            2 plazas · Octubre
+          </p>
+
+          <h2 class="contact__title" id="contacto-title">
+            ¿Hablamos de<br>
+            <span class="text-accent">tu proyecto?</span>
+          </h2>
+
+          <p class="contact__lead">
+            Escríbenos contándonos tu idea. Te propondremos la mejor estructura
+            para tu negocio sin ningún compromiso.
+          </p>
+
+          <a class="btn btn--primary btn--lg contact__cta" href="#contacto-form" data-contact-jump>
+            Cuéntanos tu proyecto
+            <svg class="btn__icon" viewBox="0 0 16 16" fill="none" aria-hidden="true" focusable="false">
+              <path d="M8 3v10M3.5 8.5 8 13l4.5-4.5" stroke="currentColor" stroke-width="1.6"
+                    stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+          </a>
+
+          <ul class="contact__trust">
+            <li>Respondemos en menos de 24 h</li>
+            <li>Sin contratos de permanencia</li>
+            <li>Presupuesto cerrado antes de empezar</li>
+          </ul>
+
+          <div class="contact__socials" role="group" aria-label="Canales directos">
+            <!-- EDITAR AQUÍ: sustituye el número de WhatsApp por el real -->
+            <a
+              class="contact-chip"
+              href="https://wa.me/34600000000?text=Hola%20Liy%C4%81%20Agency%2C%20me%20gustar%C3%ADa%20hablar%20de%20un%20proyecto."
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" aria-hidden="true">
+                <path d="M20 11.5a8 8 0 0 1-11.7 7.1L4 20l1.4-4.2A8 8 0 1 1 20 11.5Z"
+                      stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"></path>
+                <circle cx="9" cy="11.5" r="1" fill="currentColor"></circle>
+                <circle cx="12.5" cy="11.5" r="1" fill="currentColor"></circle>
+                <circle cx="16" cy="11.5" r="1" fill="currentColor"></circle>
+              </svg>
+              WhatsApp
+            </a>
+
+            <a
+              class="contact-chip"
+              href="https://www.instagram.com/liyagency.es/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" aria-hidden="true">
+                <rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.5"></rect>
+                <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.5"></circle>
+                <circle cx="17.5" cy="6.5" r="1" fill="currentColor"></circle>
+              </svg>
+              Instagram ES
+            </a>
+
+            <a class="contact-chip" href="mailto:hola@liyagency.es">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" aria-hidden="true">
+                <rect x="3" y="5" width="18" height="14" rx="2.5" stroke="currentColor" stroke-width="1.5"></rect>
+                <path d="m4 7 8 6 8-6" stroke="currentColor" stroke-width="1.5"
+                      stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+              hola@liyagency.es
+            </a>
+          </div>
+        </div>
+
+        <!-- Formulario. JS envía a /api/submit y guarda el contacto en Turso.
+             Sin JS, el action sigue siendo un mailto de respaldo.
+             EDITAR AQUÍ: endpoint en data-contact-endpoint y email de respaldo. -->
+        <form
+          class="contact-form"
+          id="contacto-form"
+          data-contact-form
+          action="mailto:hola@liyagency.es"
+          method="post"
+          enctype="text/plain"
+          data-contact-email="hola@liyagency.es"
+          data-contact-endpoint="/api/submit"
+          data-form-version="2026-10"
+          data-consent-text="Acepto que Liyā Agency me contacte sobre este proyecto."
+          data-reveal
+          style="--reveal-delay: 100ms"
+        >
+          <div class="contact-form__head">
+            <div>
+              <p class="contact-form__kicker">Briefing rápido</p>
+              <h3 class="contact-form__title">Cuéntanos tu proyecto</h3>
+            </div>
+            <span class="contact-form__time">~ 2 min</span>
+          </div>
+
+          <div
+            class="contact-form__progress"
+            data-form-progress
+            role="progressbar"
+            aria-label="Progreso del formulario"
+            aria-valuemin="0"
+            aria-valuemax="4"
+            aria-valuenow="0"
+            aria-valuetext="0 de 4 campos completados"
+          >
+            <span class="contact-form__progress-label">
+              Brief <b data-form-progress-count>0</b> / 4
+            </span>
+            <span class="contact-form__progress-track" aria-hidden="true">
+              <span class="contact-form__progress-fill" data-form-progress-fill></span>
+            </span>
+          </div>
+
+          <p class="contact-form__plan-note" data-plan-note role="status" hidden></p>
+
+          <div class="contact-form__grid">
+            <div class="field">
+              <label class="field__label" for="contact-nombre">
+                Nombre <span class="field__req" aria-hidden="true">*</span>
+              </label>
+              <input
+                class="field__control"
+                id="contact-nombre"
+                name="nombre"
+                type="text"
+                autocomplete="name"
+                placeholder="Tu nombre"
+                required
+                aria-describedby="error-nombre"
+              >
+              <p class="field__error" id="error-nombre" data-error-for="nombre"></p>
+            </div>
+
+            <div class="field">
+              <label class="field__label" for="contact-email">
+                Email <span class="field__req" aria-hidden="true">*</span>
+              </label>
+              <input
+                class="field__control"
+                id="contact-email"
+                name="email"
+                type="email"
+                autocomplete="email"
+                placeholder="tu@email.com"
+                required
+                aria-describedby="error-email"
+              >
+              <p class="field__error" id="error-email" data-error-for="email"></p>
+            </div>
+
+            <div class="field">
+              <label class="field__label" for="contact-empresa">
+                Empresa <span class="field__optional">(opcional)</span>
+              </label>
+              <input
+                class="field__control"
+                id="contact-empresa"
+                name="empresa"
+                type="text"
+                autocomplete="organization"
+                placeholder="Nombre de tu empresa"
+              >
+            </div>
+
+            <div class="field">
+              <label class="field__label" for="contacto-proyecto">¿Qué necesitas?</label>
+              <select class="field__control" id="contacto-proyecto" name="proyecto" data-contact-project>
+                <option value="no-lo-se">Aún no lo sé</option>
+                <optgroup label="Proyectos">
+                  <option value="landing">Landing page</option>
+                  <option value="ecommerce">Tienda online</option>
+                  <option value="optimizacion">Optimización web</option>
+                </optgroup>
+                <optgroup label="Planes">
+                  <option value="esencial">Plan Presencia</option>
+                  <option value="crecimiento">Plan E-commerce</option>
+                  <option value="pro">Plan Optimización</option>
+                </optgroup>
+              </select>
+            </div>
+
+            <div class="field field--full">
+              <label class="field__label" for="contact-mensaje">
+                Cuéntanos un poco más <span class="field__req" aria-hidden="true">*</span>
+              </label>
+              <textarea
+                class="field__control"
+                id="contact-mensaje"
+                name="mensaje"
+                rows="4"
+                placeholder="Objetivos, plazos, referencias que te gusten..."
+                required
+                aria-describedby="error-mensaje"
+              ></textarea>
+              <p class="field__error" id="error-mensaje" data-error-for="mensaje"></p>
+            </div>
+
+            <div class="field field--checkbox field--full">
+              <input
+                class="field__checkbox"
+                id="contact-consentimiento"
+                name="consentimiento"
+                type="checkbox"
+                required
+                aria-describedby="error-consentimiento"
+              >
+              <label class="field__check-label" for="contact-consentimiento">
+                Acepto que Liyā Agency me contacte sobre este proyecto.
+                <span>Tus datos no se comparten con terceros.</span>
+              </label>
+              <p class="field__error" id="error-consentimiento" data-error-for="consentimiento"></p>
+            </div>
+
+            <!-- Honeypot anti-spam: las personas no lo ven ni lo enfocan -->
+            <div class="contact-form__hp" aria-hidden="true">
+              <label for="contact-website">No rellenar</label>
+              <input id="contact-website" name="website" type="text" tabindex="-1" autocomplete="off">
+            </div>
+
+            <p class="contact-form__status" data-form-status role="status" aria-live="polite"></p>
+
+            <div class="contact-form__actions">
+              <button class="btn btn--primary contact-form__submit" type="submit">
+                Enviar consulta
+                <svg class="btn__icon" viewBox="0 0 16 16" fill="none" aria-hidden="true" focusable="false">
+                  <path d="M4 12 12 4M12 4H5.5M12 4v6.5" stroke="currentColor" stroke-width="1.6"
+                        stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+              </button>
+              <p class="contact-form__note">
+                Se guarda en nuestra bandeja privada y te respondemos en menos de 24 h.
+              </p>
+            </div>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- =========================================================================
+       FOOTER · BLOQUE 5
+       Marca, navegación, servicios, redes y volver arriba.
+       EDITAR AQUÍ: enlaces sociales y datos de contacto.
+       ========================================================================= -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <a class="brand" href="#top">
+            <svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+              <defs>
+                <linearGradient id="footer-brand-gradient" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#5CFFB0"></stop>
+                  <stop offset="0.5" stop-color="#00FF87"></stop>
+                  <stop offset="1" stop-color="#00C96B"></stop>
+                </linearGradient>
+              </defs>
+              <rect width="32" height="32" rx="9" fill="url(#footer-brand-gradient)"></rect>
+              <path d="M11 9v14h10" fill="none" stroke="#04120D" stroke-width="2.6"
+                    stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+            <span class="brand__name">Liyā <span class="brand__dot">Agency</span></span>
+          </a>
+
+          <p class="footer__tagline">
+            Desarrollo web y e-commerce ultrarrápido para negocios en España y Marruecos.
+          </p>
+
+          <p class="footer__status">
+            <span class="footer__dot" aria-hidden="true"></span>
+            2 plazas disponibles · Octubre
+          </p>
+
+          <a class="footer__mail" href="mailto:hola@liyagency.es">hola@liyagency.es</a>
+        </div>
+
+        <nav class="footer__nav" aria-label="Navegación del pie de página">
+          <div>
+            <h3 class="footer__heading">Navegación</h3>
+            <ul class="footer__list">
+              <li><a class="footer__link" href="#servicios">Servicios</a></li>
+              <li><a class="footer__link" href="#precios">Precios</a></li>
+              <li><a class="footer__link" href="#portfolio">Portfolio</a></li>
+              <li><a class="footer__link" href="#contacto">Contacto</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="footer__heading">Servicios</h3>
+            <ul class="footer__list">
+              <li><a class="footer__link" href="#servicios">Landing pages</a></li>
+              <li><a class="footer__link" href="#servicios">Tiendas online</a></li>
+              <li><a class="footer__link" href="#servicios">Optimización web</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="footer__heading">Social</h3>
+            <ul class="footer__list">
+              <!-- EDITAR AQUÍ: URLs reales de tus perfiles -->
+              <li>
+                <a class="footer__link" href="https://www.instagram.com/liyagency.es/" target="_blank" rel="noopener noreferrer">
+                  Instagram ES
+                  <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                    <path d="M4 12 12 4M12 4H5.5M12 4v6.5" stroke="currentColor" stroke-width="1.6"
+                          stroke-linecap="round" stroke-linejoin="round"></path>
+                  </svg>
+                </a>
+              </li>
+              <li>
+                <a class="footer__link" href="https://www.instagram.com/liyagency.fr/" target="_blank" rel="noopener noreferrer">
+                  Instagram FR
+                  <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                    <path d="M4 12 12 4M12 4H5.5M12 4v6.5" stroke="currentColor" stroke-width="1.6"
+                          stroke-linecap="round" stroke-linejoin="round"></path>
+                  </svg>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+
+      <div class="footer__bottom">
+        <p>© 2026 Liyā Agency. Desarrollando el futuro digital.</p>
+        <p>España · Marruecos</p>
+        <a class="footer__back" href="#top">
+          Volver arriba
+          <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M8 13V3M3.5 7.5 8 3l4.5 4.5" stroke="currentColor" stroke-width="1.6"
+                  stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </a>
+      </div>
+
+      <p class="footer__wordmark" aria-hidden="true">liyā agency</p>
+    </div>
+  </footer>
+
+  <!-- Módulo ES6: importa los módulos de /js/modules -->
+  <script type="module" src="js/main.js?v=15"></script>
+</body>
+</html>

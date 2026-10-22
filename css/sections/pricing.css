@@ -1,0 +1,283 @@
+/* =============================================================================
+   sections/pricing.css — BLOQUE 3 (parte 2)
+   -----------------------------------------------------------------------------
+   Tabla de precios con 3 planes. El plan central está destacado con borde,
+   glow y badge "Más elegido". En móvil se apilan.
+
+   EDITAR AQUÍ:
+   • Precios y features → index.html → sección #precios
+   • Color del plan destacado → .price-card--featured
+   ========================================================================== */
+
+.pricing {
+  position: relative;
+  overflow: clip;
+  border-block: 1px solid var(--color-border);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.018), transparent 45%);
+}
+
+/* Glow verde detrás del plan destacado */
+.pricing::before {
+  content: "";
+  position: absolute;
+  top: 32%;
+  left: 50%;
+  width: min(720px, 92vw);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0, 255, 135, 0.09), transparent 65%);
+  filter: blur(60px);
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.pricing .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* Cabecera centrada */
+.pricing .section__head {
+  margin-inline: auto;
+  text-align: center;
+  align-items: center;
+}
+
+.pricing .section__lead {
+  margin-inline: auto;
+}
+
+.pricing__grid {
+  display: grid;
+  gap: var(--space-8);
+}
+
+/* -----------------------------------------------------------------------------
+   CARD DE PRECIO
+   -------------------------------------------------------------------------- */
+.price-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: clamp(1.5rem, 3vw, 2rem);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01));
+  transition:
+    transform var(--dur) var(--ease-out),
+    border-color var(--dur) var(--ease-out),
+    box-shadow var(--dur) var(--ease-out);
+}
+
+.price-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--color-border-strong);
+  box-shadow: var(--shadow-md);
+}
+
+/* Plan recomendado */
+.price-card--featured {
+  border-color: rgba(0, 255, 135, 0.34);
+  background:
+    radial-gradient(90% 55% at 50% 0%, rgba(0, 255, 135, 0.1), transparent 70%),
+    linear-gradient(180deg, rgba(0, 255, 135, 0.045), rgba(255, 255, 255, 0.012));
+  box-shadow: 0 35px 90px -50px rgba(0, 255, 135, 0.55);
+}
+
+.price-card--featured:hover {
+  border-color: rgba(0, 255, 135, 0.58);
+  box-shadow: 0 40px 100px -50px rgba(0, 255, 135, 0.65);
+}
+
+/* Badge "Más elegido" */
+.price-card__badge {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  z-index: 2;
+  padding: 0.4rem 0.85rem;
+  border-radius: var(--radius-pill);
+  background: var(--color-accent);
+  color: var(--color-accent-ink);
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  line-height: 1;
+  text-transform: uppercase;
+  white-space: nowrap;
+  box-shadow: 0 0 24px -4px var(--color-accent-glow);
+  transform: translate(-50%, -50%);
+}
+
+.price-card__name {
+  font-size: var(--fs-xl);
+  font-weight: 600;
+}
+
+.price-card__desc {
+  margin-top: var(--space-2);
+  min-height: 3.2em;
+  color: var(--color-text-muted);
+  font-size: 0.875rem;
+  line-height: 1.55;
+}
+
+/* Bloque de precio */
+.price-card__from {
+  margin-top: var(--space-6);
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-text-dim);
+}
+
+.price-card__amount {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.15rem;
+  margin-top: 0.35rem;
+  font-family: var(--font-display);
+  font-size: clamp(2.75rem, 5.5vw, 3.5rem);
+  font-weight: 600;
+  line-height: 0.95;
+  letter-spacing: -0.05em;
+  color: var(--color-text);
+}
+
+.price-card--featured .price-card__amount {
+  color: var(--color-accent);
+}
+
+.price-card__currency {
+  margin-top: 0.18em;
+  font-size: 0.42em;
+  font-weight: 500;
+  color: var(--color-text-muted);
+}
+
+.price-card--featured .price-card__currency {
+  color: var(--color-accent-deep);
+}
+
+.price-card__note {
+  margin-top: var(--space-2);
+  font-size: 0.75rem;
+  color: var(--color-text-dim);
+}
+
+/* CTA del plan */
+.price-card .btn {
+  width: 100%;
+  margin-top: var(--space-5);
+}
+
+/* Lista de características */
+.price-card__features-title {
+  margin-top: var(--space-6);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--color-border);
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-text-dim);
+}
+
+.price-card__features {
+  display: grid;
+  gap: 0.65rem;
+  margin-top: var(--space-4);
+}
+
+.price-card__features li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.55rem;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--color-text-muted);
+}
+
+.price-card__features svg {
+  width: 13px;
+  height: 13px;
+  flex: none;
+  margin-top: 0.2rem;
+  color: var(--color-accent);
+}
+
+/* -----------------------------------------------------------------------------
+   GARANTÍAS + LETRA PEQUEÑA
+   -------------------------------------------------------------------------- */
+.pricing__guarantees {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-3) clamp(1.25rem, 4vw, 2.5rem);
+  margin-top: clamp(2.5rem, 5vw, 3.5rem);
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--color-border);
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+}
+
+.pricing__guarantees li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.pricing__guarantees svg {
+  width: 14px;
+  height: 14px;
+  flex: none;
+  color: var(--color-accent);
+}
+
+.pricing__fineprint {
+  max-width: 70ch;
+  margin: var(--space-4) auto 0;
+  text-align: center;
+  font-size: 0.75rem;
+  line-height: 1.6;
+  color: var(--color-text-dim);
+}
+
+.pricing__fineprint a {
+  color: var(--color-text-muted);
+  text-decoration: underline;
+  text-decoration-color: var(--color-border-strong);
+  text-underline-offset: 3px;
+  transition: color var(--dur) var(--ease-out);
+}
+
+.pricing__fineprint a:hover {
+  color: var(--color-accent);
+}
+
+/* -----------------------------------------------------------------------------
+   RESPONSIVE
+   -------------------------------------------------------------------------- */
+@media (min-width: 900px) {
+  .pricing__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: stretch;
+    gap: var(--space-5);
+    padding-top: 0.75rem;
+  }
+
+  /* El plan destacado se eleva ligeramente */
+  .price-card--featured {
+    transform: translateY(-12px);
+  }
+
+  .price-card--featured:hover {
+    transform: translateY(-16px);
+  }
+
+  .price-card__desc {
+    min-height: 4.65em;
+  }
+}

@@ -1,0 +1,8 @@
+# Entorno local
+.env
+.env.local
+.env.*.local
+.vercel/
+
+# Dependencias
+node_modules/

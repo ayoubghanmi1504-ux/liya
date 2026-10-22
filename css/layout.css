@@ -1,0 +1,124 @@
+/* =============================================================================
+   layout.css — Estructura de página y fondos decorativos
+   -----------------------------------------------------------------------------
+   Define el "escenario": fondo con glow verde + rejilla sutil, el área principal
+   y las utilidades de sección que usarán los siguientes bloques.
+   ========================================================================== */
+
+/* --- Fondo global ----------------------------------------------------------
+   Dos capas fijas detrás de todo. No interfieren con los clics.
+   EDITAR AQUÍ: intensidad y posición del glow verde.
+   -------------------------------------------------------------------------- */
+.page-bg {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-bg);
+  pointer-events: none;
+  background:
+    radial-gradient(70% 55% at 78% -12%, rgba(0, 255, 135, 0.11), transparent 62%),
+    radial-gradient(45% 45% at -8% 22%, rgba(0, 255, 135, 0.05), transparent 70%),
+    var(--color-bg);
+}
+
+/* Rejilla técnica que se desvanece hacia abajo (detalle de agencia) */
+.page-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 64px 64px;
+  -webkit-mask-image: radial-gradient(ellipse 75% 55% at 50% 0%, #000 15%, transparent 78%);
+  mask-image: radial-gradient(ellipse 75% 55% at 50% 0%, #000 15%, transparent 78%);
+}
+
+/* Foco verde que sigue al cursor (lo mueve js/modules/pointer.js) */
+.page-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    340px circle at var(--pointer-x, 50%) var(--pointer-y, 45%),
+    rgba(0, 255, 135, 0.06),
+    transparent 72%
+  );
+  opacity: 0.9;
+  transition: opacity 0.5s ease;
+}
+
+@media (hover: none), (pointer: coarse), (prefers-reduced-motion: reduce) {
+  .page-bg::after {
+    display: none;
+  }
+}
+
+/* --- Contenido principal --------------------------------------------------- */
+.site-main {
+  position: relative;
+  z-index: 1;
+}
+
+/* Envoltorio estándar de sección para los próximos bloques.
+   Uso: <section class="section" id="servicios"> ... </section> */
+.section {
+  position: relative;
+  padding-block: var(--section-y);
+}
+
+/* Cabecera de sección reutilizable (eyebrow + título + entradilla) */
+.section__head {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  max-width: 62ch;
+  margin-bottom: clamp(2.5rem, 6vw, 4.5rem);
+}
+
+.section__title {
+  font-size: var(--fs-3xl);
+}
+
+.section__lead {
+  max-width: 52ch;
+  color: var(--color-text-muted);
+  font-size: var(--fs-lg);
+}
+
+/* Variante centrada de la cabecera de sección */
+.section__head--center {
+  align-items: center;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.section__head--center .section__lead {
+  margin-inline: auto;
+}
+
+/* -----------------------------------------------------------------------------
+   REVEAL AL SCROLL
+   La clase .has-reveal la añade js/modules/reveal.js. Sin JS (o con movimiento
+   reducido) el contenido es visible por defecto.
+   -------------------------------------------------------------------------- */
+.has-reveal [data-reveal] {
+  opacity: 0;
+  translate: 0 26px;
+  transition:
+    opacity 0.75s var(--ease-out),
+    translate 0.75s var(--ease-out);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+.has-reveal [data-reveal].is-visible {
+  opacity: 1;
+  translate: 0 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .has-reveal [data-reveal] {
+    opacity: 1;
+    translate: 0 0;
+    transition-delay: 0ms;
+  }
+}

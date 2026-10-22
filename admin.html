@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <meta name="theme-color" content="#08090A">
+  <meta name="color-scheme" content="dark">
+  <title>Bandeja de entrada · Liyā Agency</title>
+
+  <link rel="icon" href="assets/icons/favicon.svg?v=14" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/admin.css?v=4">
+</head>
+<body>
+  <div class="admin-shell">
+    <header class="admin-header">
+      <a class="admin-brand" href="/" aria-label="Volver a la web de Liyā Agency">
+        <span class="admin-brand__mark" aria-hidden="true">L</span>
+        <span class="admin-brand__text">Liyā Agency <span>· Bandeja de entrada</span></span>
+      </a>
+
+      <div class="admin-header__actions">
+        <span class="admin-pill" id="db-status">
+          <span class="admin-pill__dot" aria-hidden="true"></span>
+          Turso · SQLite
+        </span>
+        <button class="admin-btn" id="refresh-btn" type="button">Actualizar</button>
+        <button class="admin-btn" id="export-btn" type="button">Exportar CSV</button>
+        <button class="admin-btn admin-btn--ghost" id="logout-btn" type="button" hidden>Salir</button>
+      </div>
+    </header>
+
+    <main class="admin-main">
+      <!-- Acceso -->
+      <section class="login-view" id="login-view" aria-labelledby="login-title">
+        <div class="login-card">
+          <p class="eyebrow">Acceso privado</p>
+          <h1 id="login-title">Bandeja de entrada</h1>
+          <p class="muted">
+            Introduce la contraseña de administración para consultar los contactos
+            guardados en Turso.
+          </p>
+
+          <form class="login-form" id="login-form">
+            <label class="field-label" for="password-input">Contraseña de administración</label>
+            <input
+              class="input"
+              id="password-input"
+              name="password"
+              type="password"
+              autocomplete="current-password"
+              spellcheck="false"
+              placeholder="Escribe la contraseña..."
+              required
+            >
+            <button class="admin-btn admin-btn--primary" type="submit">Entrar</button>
+            <p class="error" id="login-error" role="alert" hidden></p>
+          </form>
+
+          <p class="hint">
+            La contraseña se configura en Vercel con la variable
+            <code>ADMIN_PASSWORD</code> o con el respaldo de
+            <code>lib/auth.js</code>. Se guarda solo en esta pestaña y no se
+            envía en la URL.
+          </p>
+        </div>
+      </section>
+
+      <!-- Bandeja -->
+      <section class="inbox-view" id="inbox-view" hidden aria-labelledby="inbox-title">
+        <div class="inbox-head">
+          <div class="inbox-head__copy">
+            <p class="eyebrow">Contactos</p>
+            <h1 id="inbox-title">Bandeja de entrada</h1>
+            <p class="muted" id="last-update">Cargando…</p>
+          </div>
+
+          <div class="stats" aria-label="Resumen de contactos">
+            <div class="stat">
+              <span class="stat__label">Total</span>
+              <strong class="stat__value" id="stat-total">0</strong>
+            </div>
+            <div class="stat stat--accent">
+              <span class="stat__label">Nuevos</span>
+              <strong class="stat__value" id="stat-new">0</strong>
+            </div>
+            <div class="stat">
+              <span class="stat__label">Hoy</span>
+              <strong class="stat__value" id="stat-today">0</strong>
+            </div>
+            <div class="stat">
+              <span class="stat__label">Últimos 7 días</span>
+              <strong class="stat__value" id="stat-week">0</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="toolbar">
+          <label class="search">
+            <span class="sr-only">Buscar contactos</span>
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <circle cx="11" cy="11" r="6.5" stroke="currentColor" stroke-width="1.7"></circle>
+              <path d="m16 16 4 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"></path>
+            </svg>
+            <input
+              class="input"
+              id="search-input"
+              type="search"
+              placeholder="Buscar nombre, email, empresa, mensaje…"
+              autocomplete="off"
+            >
+          </label>
+
+          <select class="input select" id="status-filter" aria-label="Filtrar por estado">
+            <option value="">Todos los estados</option>
+            <option value="new">Nuevos</option>
+            <option value="read">Leídos</option>
+            <option value="archived">Archivados</option>
+          </select>
+
+          <select class="input select" id="project-filter" aria-label="Filtrar por proyecto">
+            <option value="">Todos los proyectos</option>
+            <option value="landing">Landing page</option>
+            <option value="ecommerce">Tienda online</option>
+            <option value="optimizacion">Optimización web</option>
+            <option value="esencial">Plan Presencia</option>
+            <option value="crecimiento">Plan E-commerce</option>
+            <option value="pro">Plan Optimización</option>
+            <option value="no-lo-se">Aún no lo sé</option>
+          </select>
+
+          <button class="admin-btn admin-btn--icon" id="reload-btn" type="button" title="Recargar" aria-label="Recargar contactos">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M20 11a8 8 0 1 0-2.3 6.7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"></path>
+              <path d="M20 5v6h-6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+          </button>
+        </div>
+
+        <div class="inbox-grid">
+          <section class="list-panel" aria-labelledby="list-title">
+            <div class="list-panel__head">
+              <h2 class="sr-only" id="list-title">Contactos recibidos</h2>
+              <p id="result-count">0 contactos</p>
+              <span class="list-panel__hint">Pulsa uno para ver el detalle</span>
+            </div>
+
+            <div class="contact-list" id="contact-list"></div>
+            <div class="empty" id="list-empty" hidden>
+              <strong>No hay contactos con estos filtros.</strong>
+              <span>Prueba a quitar la búsqueda o cambia el estado.</span>
+            </div>
+            <p class="error" id="list-error" role="alert" hidden></p>
+          </section>
+
+          <aside class="detail-panel" aria-live="polite">
+            <div class="detail-empty" id="detail-empty">
+              <span class="detail-empty__icon" aria-hidden="true">↗</span>
+              <strong>Selecciona un contacto</strong>
+              <span>Verás el formulario completo, el contexto de la visita y los datos técnicos guardados.</span>
+            </div>
+
+            <div class="detail-view" id="detail-view" hidden>
+              <div class="detail-head">
+                <div>
+                  <p class="eyebrow" id="detail-project">—</p>
+                  <h2 id="detail-name">—</h2>
+                  <a class="detail-mail" id="detail-email" href="#">—</a>
+                </div>
+                <span class="status" id="detail-status">Nuevo</span>
+              </div>
+
+              <div class="detail-actions">
+                <label class="detail-actions__label" for="detail-status-select">Estado</label>
+                <select class="input select" id="detail-status-select">
+                  <option value="new">Nuevo</option>
+                  <option value="read">Leído</option>
+                  <option value="archived">Archivado</option>
+                </select>
+                <button class="admin-btn admin-btn--primary" id="save-btn" type="button">Guardar</button>
+                <button class="admin-btn admin-btn--danger" id="delete-btn" type="button">Eliminar</button>
+              </div>
+
+              <div class="detail-body">
+                <section class="detail-section">
+                  <h3>Mensaje</h3>
+                  <p class="detail-message" id="detail-message">—</p>
+                </section>
+
+                <section class="detail-section">
+                  <h3>Formulario</h3>
+                  <dl class="detail-grid" id="detail-form-grid"></dl>
+                </section>
+
+                <section class="detail-section">
+                  <h3>Contexto de la visita</h3>
+                  <dl class="detail-grid" id="detail-context"></dl>
+                </section>
+
+                <section class="detail-section">
+                  <h3>Dispositivo y navegador</h3>
+                  <dl class="detail-grid" id="detail-device"></dl>
+                </section>
+
+                <section class="detail-section">
+                  <h3>Servidor</h3>
+                  <dl class="detail-grid" id="detail-server"></dl>
+                </section>
+
+                <section class="detail-section">
+                  <h3>Notas internas</h3>
+                  <label class="sr-only" for="detail-notes">Notas internas del contacto</label>
+                  <textarea
+                    class="input textarea"
+                    id="detail-notes"
+                    rows="4"
+                    placeholder="Añade una nota sobre este contacto…"
+                  ></textarea>
+                </section>
+
+                <details class="raw-details">
+                  <summary>JSON original recibido</summary>
+                  <pre id="detail-raw"></pre>
+                </details>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </div>
+
+  <script type="module" src="js/admin.js?v=4"></script>
+</body>
+</html>
