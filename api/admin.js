@@ -26,6 +26,7 @@ import {
   sendJson,
   sendText,
 } from "../lib/http.js";
+import { ensureSchema } from "../lib/schema.js";
 import { getDb } from "../lib/turso.js";
 
 function requestUrl(req) {
@@ -65,6 +66,7 @@ export default async function handler(req, res) {
 
   try {
     const db = getDb();
+    await ensureSchema(db);
 
     if (req.method === "GET" && resource === "list") {
       const q = (url.searchParams.get("q") || "").trim();

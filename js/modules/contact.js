@@ -44,7 +44,8 @@ const COPY = IS_FR
       submitError: (status) => `Impossible d’envoyer le formulaire (${status}).`,
       reviewFields: 'Vérifiez les champs indiqués.',
       success: 'Message bien reçu. Nous vous répondrons sous 24 h.',
-      fallback: 'Impossible de joindre la boîte de réception. Ouverture de votre client e-mail…',
+      fallback: 'La boîte de réception est momentanément indisponible. Ouverture de votre client e-mail pour ne pas perdre votre message…',
+      fallbackLink: 'Ouvrir l’e-mail',
       errorWithRecipient: (message, recipient) =>
         `${message} Si le problème persiste, écrivez-nous à ${recipient}.`,
       progress: (done, total) => `${done} sur ${total} champs complétés`,
@@ -69,7 +70,8 @@ const COPY = IS_FR
       submitError: (status) => `No se pudo enviar el formulario (${status}).`,
       reviewFields: 'Revisa los campos marcados.',
       success: 'Mensaje recibido. Te responderemos en menos de 24 h.',
-      fallback: 'No se pudo conectar con la bandeja. Abriendo tu cliente de correo como respaldo…',
+      fallback: 'La bandeja no está disponible ahora mismo. Abrimos tu correo para no perder el mensaje…',
+      fallbackLink: 'Abrir el correo',
       errorWithRecipient: (message, recipient) =>
         `${message} Si persiste, escríbenos a ${recipient}.`,
       progress: (done, total) => `${done} de ${total} campos completados`,
@@ -302,6 +304,8 @@ async function submitToApi(form) {
     );
     error.status = response.status;
     error.fieldErrors = data?.errors || null;
+    error.fallback = Boolean(data?.fallback);
+    error.code = data?.code || null;
     throw error;
   }
 
@@ -321,10 +325,18 @@ function initSubmit(form) {
   form.noValidate = true;
   form.dataset.startedAt = String(Date.now());
 
-  const setStatus = (message, state = '') => {
+  const setStatus = (message, state = '', action = null) => {
     if (!status) return;
     status.textContent = message;
     status.dataset.state = state;
+
+    if (action?.href) {
+      const link = document.createElement('a');
+      link.className = 'contact-form__status-link';
+      link.href = action.href;
+      link.textContent = action.label || action.href;
+      status.append(' ', link);
+    }
   };
 
   const setBusy = (busy) => {
@@ -392,14 +404,19 @@ function initSubmit(form) {
       const serverUnavailable =
         error.name === 'TypeError' ||
         error.status === 404 ||
-        error.status === 405;
+        error.status === 405 ||
+        error.status >= 500 ||
+        error.fallback;
 
       if (serverUnavailable) {
-        setStatus(COPY.fallback, 'error');
         const mailto = buildMailto(form, recipient);
+        setStatus(COPY.fallback, 'error', {
+          href: mailto,
+          label: COPY.fallbackLink,
+        });
         window.setTimeout(() => {
           window.location.href = mailto;
-        }, 700);
+        }, 900);
         return;
       }
 

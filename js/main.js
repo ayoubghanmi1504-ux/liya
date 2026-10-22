@@ -5,12 +5,12 @@
  * pequeño, testeable y fácil de mover a un framework si algún día hace falta.
  */
 
-import { initNavigation } from './modules/navigation.js?v=15';
-import { initPointer } from './modules/pointer.js?v=15';
-import { initHero } from './modules/hero.js?v=15';
-import { initReveal } from './modules/reveal.js?v=15';
-import { initPortfolio } from './modules/portfolio.js?v=15';
-import { initContact } from './modules/contact.js?v=15';
+import { initNavigation } from './modules/navigation.js?v=16';
+import { initPointer } from './modules/pointer.js?v=16';
+import { initHero } from './modules/hero.js?v=16';
+import { initReveal } from './modules/reveal.js?v=16';
+import { initPortfolio } from './modules/portfolio.js?v=16';
+import { initContact } from './modules/contact.js?v=16';
 
 const init = () => {
   initNavigation();

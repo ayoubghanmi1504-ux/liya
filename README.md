@@ -42,6 +42,7 @@ nova-studio/
 │   ├── auth.js                # contraseña del panel
 │   ├── contactos.js           # validación, SQL y CSV
 │   ├── http.js                # helpers de request/response
+│   ├── schema.js              # crea la tabla si no existe
 │   └── turso.js               # cliente @libsql/client
 ├── sql/
 │   └── schema.sql             # tabla e índices
@@ -96,6 +97,10 @@ turso db shell liya-agency
 ```
 
 El script crea la tabla `contactos` y los índices de fecha, estado y proyecto.
+
+> Las funciones también crean la tabla automáticamente en el primer uso
+> (`lib/schema.js`). Ejecutar el SQL a mano sigue siendo la opción recomendada
+> para tener el esquema visible y controlado desde Turso.
 
 ## 3. Variables de entorno
 
@@ -240,6 +245,7 @@ Comprueba que las variables existen y que Turso responde:
   "ok": true,
   "service": "liya-contact-api",
   "database": "turso",
+  "schema": true,
   "db": true
 }
 ```
@@ -300,7 +306,7 @@ Para cerrar sesión, pulsa **Salir**.
 | Endpoint del formulario | `data-contact-endpoint="/api/submit"` |
 | Validación servidor | `lib/contactos.js` |
 | SQL de contactos | `lib/contactos.js` |
-| Tabla de Turso | `sql/schema.sql` |
+| Tabla de Turso | `sql/schema.sql` + `lib/schema.js` |
 | Panel privado | `admin.html` + `js/admin.js` + `css/admin.css` |
 | Contraseña del panel | `ADMIN_PASSWORD` en Vercel o respaldo en `lib/auth.js` |
 | Conexión a Turso | `lib/turso.js` |
@@ -308,11 +314,35 @@ Para cerrar sesión, pulsa **Salir**.
 
 ## Notas
 
-- Las dos landings usan `?v=15` en CSS y JS para evitar versiones antiguas en
+- Las dos landings usan `?v=16` en CSS y JS para evitar versiones antiguas en
   caché. Si editas estilos o scripts, sube ese número en `index.html`,
   `fr.html` y en los imports de `js/main.js`. `admin.html` usa `admin.css?v=4`
   y `admin.js?v=4`.
-- `proyectos/` y `sql/` están en `.vercelignore`: no se publican, pero siguen
-  en el repositorio como fuente.
+- `/proyectos/` y `/sql/` están en `.vercelignore`: no se publican, pero siguen
+  en el repositorio como fuente. Las rutas llevan `/` inicial para no excluir
+  `assets/img/proyectos/`, que sí debe desplegarse.
 - El antiguo backend `server.py` y su SQLite local se han retirado. La única
   fuente de datos es Turso.
+
+## Solución de problemas
+
+### Las capturas del portfolio dan 404 en Vercel
+
+Comprueba que `.vercelignore` usa `/proyectos/` (con barra inicial) y no
+`proyectos/`. Sin la barra, Vercel también excluye `assets/img/proyectos/`,
+que es donde viven las capturas publicadas. Después vuelve a desplegar.
+
+### El formulario devuelve 500 o el panel no carga contactos
+
+Abre `/api/health` en el deployment:
+
+- `{"ok":true,...,"schema":true}`: Turso y la tabla están listos.
+- `code:"missing_env"`: faltan `TURSO_DATABASE_URL` o `TURSO_AUTH_TOKEN` en
+  Vercel.
+- `code:"db_unreachable"`: el token o la URL de Turso no son válidos.
+
+La versión actual crea la tabla automáticamente al primer uso
+(`lib/schema.js`). Si el deployment todavía es antiguo, ejecuta
+`sql/schema.sql` en Turso o vuelve a desplegar. Mientras el servidor no esté
+disponible, el formulario ofrece un enlace `mailto:` para no perder el
+mensaje.

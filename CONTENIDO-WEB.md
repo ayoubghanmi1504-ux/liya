@@ -608,7 +608,7 @@ guarda la preferencia en la cookie `liya_lang`.
 - **Error general:** Revisa los campos marcados.
 - **Enviando:** Enviando…
 - **Éxito:** Mensaje recibido. Te responderemos en menos de 24 h.
-- **Error de conexión:** No se pudo conectar con la bandeja. Abriendo tu cliente de correo como respaldo…
+- **Error de conexión:** La bandeja no está disponible ahora mismo. Abrimos tu correo para no perder el mensaje… + enlace **Abrir el correo**.
 - **Error del servidor:** {mensaje} Si persiste, escríbenos a hola@liyagency.es.
 
 ### Preselección de plan o servicio
@@ -683,7 +683,7 @@ guarda la preferencia en la cookie `liya_lang`.
 20. **Contraseña de la bandeja:** La contraseña de respaldo está en `lib/auth.js`; en producción conviene definir `ADMIN_PASSWORD` con una contraseña larga y privada. El panel la guarda solo en `sessionStorage` y la envía por HTTPS a `/api/admin`.
 21. **Aviso por email:** Esta versión guarda en Turso y muestra los contactos en la bandeja, pero no envía emails. Si se quiere aviso inmediato, habría que añadir un proveedor como Resend o SMTP.
 22. **Despliegue:** En Vercel, selecciona `nova-studio` como Root Directory. La carpeta `/api` debe quedar en la raíz del proyecto desplegado.
-23. **Esquema de Turso:** Antes del primer envío hay que ejecutar `sql/schema.sql` en la base de datos de Turso.
+23. **Esquema de Turso:** `lib/schema.js` crea la tabla automáticamente en el primer uso. También se puede ejecutar `sql/schema.sql` a mano desde Turso CLI.
 
 ---
 

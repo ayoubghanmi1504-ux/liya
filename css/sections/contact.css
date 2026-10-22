@@ -462,6 +462,17 @@ select.field__control {
   color: #ff8b8b;
 }
 
+.contact-form__status-link {
+  color: inherit;
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.contact-form__status-link:hover {
+  color: var(--color-text);
+}
+
 .contact-form__actions {
   display: flex;
   flex-wrap: wrap;

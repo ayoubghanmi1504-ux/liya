@@ -1,8 +1,9 @@
 /**
- * GET /api/health — comprueba que Turso responde.
+ * GET /api/health — comprueba que Turso responde y que la tabla existe.
  */
 
 import { methodNotAllowed, sendJson } from "../lib/http.js";
+import { ensureSchema } from "../lib/schema.js";
 import { getDb } from "../lib/turso.js";
 
 export default async function handler(req, res) {
@@ -10,8 +11,27 @@ export default async function handler(req, res) {
     return methodNotAllowed(res, ["GET"]);
   }
 
+  const hasUrl = Boolean(process.env.TURSO_DATABASE_URL?.trim());
+  const hasToken = Boolean(process.env.TURSO_AUTH_TOKEN?.trim());
+
+  if (!hasUrl || !hasToken) {
+    return sendJson(res, 503, {
+      ok: false,
+      service: "liya-contact-api",
+      database: "turso",
+      code: "missing_env",
+      missing: [
+        ...(hasUrl ? [] : ["TURSO_DATABASE_URL"]),
+        ...(hasToken ? [] : ["TURSO_AUTH_TOKEN"]),
+      ],
+      error: "Faltan variables de Turso en Vercel.",
+    });
+  }
+
   try {
-    const result = await getDb().execute({
+    const db = getDb();
+    await ensureSchema(db);
+    const result = await db.execute({
       sql: "SELECT 1 AS ok",
       args: [],
     });
@@ -20,6 +40,7 @@ export default async function handler(req, res) {
       ok: true,
       service: "liya-contact-api",
       database: "turso",
+      schema: true,
       time: new Date().toISOString(),
       db: Number(result.rows[0]?.ok) === 1,
     });
@@ -29,6 +50,7 @@ export default async function handler(req, res) {
       ok: false,
       service: "liya-contact-api",
       database: "turso",
+      code: "db_unreachable",
       error: "No se pudo conectar con Turso.",
     });
   }

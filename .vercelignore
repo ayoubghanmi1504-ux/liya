@@ -5,9 +5,10 @@
 node_modules/
 .vercel/
 
-# Documentación y fuentes que no forman parte del sitio publicado
-README.md
-CONTENIDO-WEB.md
-proyectos/
-sql/
-scripts/
+# Documentación y fuentes que no forman parte del sitio publicado.
+# Usa rutas absolutas para no excluir assets/img/proyectos/.
+/README.md
+/CONTENIDO-WEB.md
+/proyectos/
+/sql/
+/scripts/

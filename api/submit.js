@@ -9,6 +9,7 @@ import {
   requestContext,
   sendJson,
 } from "../lib/http.js";
+import { ensureSchema } from "../lib/schema.js";
 import { getDb } from "../lib/turso.js";
 
 export const config = {
@@ -78,17 +79,24 @@ export default async function handler(req, res) {
   };
 
   try {
-    const saved = await insertContact(getDb(), record);
+    const db = getDb();
+    await ensureSchema(db);
+    const saved = await insertContact(db, record);
     return sendJson(res, 201, {
       ok: true,
       id: saved.id,
       created_at: saved.created_at,
     });
   } catch (error) {
+    const missingConfig = /TURSO_DATABASE_URL|TURSO_AUTH_TOKEN/.test(
+      String(error?.message || "")
+    );
     console.error("[api/submit] No se pudo guardar el contacto:", error);
-    return sendJson(res, 500, {
+    return sendJson(res, missingConfig ? 503 : 500, {
       ok: false,
       error: copy.save,
+      code: missingConfig ? "db_not_configured" : "db_error",
+      fallback: true,
     });
   }
 }
